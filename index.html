@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Steve's Website</title>
+    <meta name="author" content="Steve Yin">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        h1 {background-color: blue;}
+    </style>
+  </head>
+  <body>
+    <header>
+        <h1>Welcome to Steve Yin's Website</h1>
+        <nav>
+            <ul>
+                <li><a href="/pages/...">About Me</a></li>
+                <li><a href="/pages/...">Past jobs</a></li>
+                <li><a href="/pages/...">Experience</a></li>
+                <li><a href="/pages/...">Projects</a></li>
+                <li><a href="/pages/...">Interest</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Introduction</h2>
+        <section>
+            <p>Hi My Name is <b>Yue Yin</b> and I go by <strong>Steve</strong></p>
+            <picture>
+                <source srcset="/scr/profilepic.jpg" type="jpg" media="(max-width: 10px)">
+                <img src="/src/profilepic.jpg" alt="Image of Steve Yin">
+            </picture>
+            <div>
+                <p>
+                    I am currently on the pursue of my <em>Computer Engineering</em> 
+                    Master Degree in <i>UCSD</i> <br> And I managed to graduate in <b>3 years</b>
+                    due to my planning and hardwork. 
+                </p>
+                <p>the code below summarized a period of my college life: </p>
+            </div>
+            <pre>
+                <code>
+Person me = new Person();
+while(me.alive){
+    me.wake();
+    me.Eat();
+    me.code();
+    me.sleep();
+}
+                </code>
+            </pre>
+            <aside>
+                <p>this is a little over exatratted but it's true</p>
+            </aside>
+        </section>
+        <hr>
+        <section>
+            <h3><span>3 Facts</span> about me</h3>
+                <ol>
+                    <li>I moved to America when I was in high school</li>
+                    <li>I like to travel around the world</li>
+                    <li>I do a lot of sports but never watch their match</li>
+                </ol>
+        </section>
+        <iframe src="https://www.example.com"></iframe>
+        <audio controls>
+            <source src="src/background.mp3" type="audio/mpeg" alt = "background sound">
+            Your browser does not support the audio element.
+        </audio>
+        <video controls>
+            <source src="src/Studio_Project.mp4" type="video/mp4" alt = "happy cat">
+            Your browser does not support the video element.
+        </video>
+
+        <canvas id="canvas" width="200" height="100"></canvas>
+        <script type="application/javascript">
+            function draw() {
+              const canvas = document.getElementById("canvas");
+              if (canvas.getContext) {
+                const ctx = canvas.getContext("2d");
+      
+                ctx.fillStyle = "rgb(200, 0, 0)";
+                ctx.fillRect(10, 10, 50, 50);
+                ctx.beginPath();
+                ctx.moveTo(10, 10);
+                ctx.lineTo(100, 100);
+                ctx.lineTo(100, 10);
+                ctx.fill();
+              }
+            }
+            draw();
+        </script>
+        <svg width="100" height="100">
+            <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+        </svg>
+        <h2>Question and Comments</h2>
+        <form>
+            <label for="inputField">your email</label>
+            <input type="text" id="inputField">
+            <fieldset>
+                <legend>do you like this site</legend>
+                <input type="radio" name="radioGroup" value="yes"> Yes<br>
+                <input type="radio" name="radioGroup" value="No"> No<br>
+            </fieldset>
+            <label>what do you want to say to me?</label>
+            <textarea></textarea><br>
+            <label>which page needs imporvement</label>
+            <input list="imporvement" name="imporvement" id="imporvement">
+            <datalist id=" imporvement">
+                <option value="Home">
+                <option value="about">
+                <option value="experience">
+                <option value="job">
+                <option value="project">
+                <option value="interest">
+            </datalist><br>
+            <label>what do you like the most about this page</label>
+            <select>
+                <optgroup label="pages">
+                    <option value="Home">Home</option>
+                    <option value="about">about</option>
+                    <option value="experience">experience</option>
+                    <option value="job">job</option>
+                    <option value="project">project</option>
+                    <option value="interest">interest</option>
+                </optgroup>
+                <optgroup label = "texts">
+                    <option value="Introduction">Introduction</option>
+                    <option value="peronal statement">peronal statement</option>
+                </optgroup>
+            </select>
+            <input type="submit">
+        </form>
+        <details>
+            <summary>Click to find out </summary>
+            <p>Hidden content goes here.</p>
+        </details>
+        <template id="myTemplate">
+            <p>show me if you want</p>
+        </template>
+        <table>
+            <caption>record of experience</caption>
+            <colgroup>
+                <col span="1" style="background-color: #e0e0e0;">
+                <col span="2" style="background-color: #f0f0f0;">
+            </colgroup>
+            <tr>
+                <th>Project</th>
+                <th>jobs</th>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>2</td>
+            </tr>
+        </table>
+        <figure>
+            <img src="/src/flower.jpg" alt="flower Image">
+            <figcaption>Thank you</figcaption>
+        </figure>
+        <button>back to top</button>
+    </main> 
+    <footer>
+        <p>Created by Steve Yin</p>
+    </footer>
+  </body>
+</html>
