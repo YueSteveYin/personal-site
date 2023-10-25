@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8">
     <title>Steve's Website</title>
     <meta name="author" content="Steve Yin">
     <link rel="stylesheet" href="styles.css">
@@ -26,7 +27,7 @@
         <section>
             <p>Hi My Name is <b>Yue Yin</b> and I go by <strong>Steve</strong></p>
             <picture>
-                <source srcset="/scr/profilepic.jpg" type="jpg" media="(max-width: 10px)">
+                <source srcset="/scr/profilepic.jpg" type="image/jpeg">
                 <img src="/src/profilepic.jpg" alt="Image of Steve Yin">
             </picture>
             <div>
@@ -63,11 +64,11 @@ while(me.alive){
         </section>
         <iframe src="https://www.example.com"></iframe>
         <audio controls>
-            <source src="src/background.mp3" type="audio/mpeg" alt = "background sound">
+            <source src="src/background.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
         <video controls>
-            <source src="src/Studio_Project.mp4" type="video/mp4" alt = "happy cat">
+            <source src="src/Studio_Project.mp4" type="video/mp4">
             Your browser does not support the video element.
         </video>
 
@@ -104,8 +105,8 @@ while(me.alive){
             <label>what do you want to say to me?</label>
             <textarea></textarea><br>
             <label>which page needs imporvement</label>
-            <input list="imporvement" name="imporvement" id="imporvement">
-            <datalist id=" imporvement">
+            <input list="improvement" name="improvement_select" id="improvement_select">
+            <datalist id="improvement">
                 <option value="Home">
                 <option value="about">
                 <option value="experience">
@@ -141,7 +142,7 @@ while(me.alive){
             <caption>record of experience</caption>
             <colgroup>
                 <col span="1" style="background-color: #e0e0e0;">
-                <col span="2" style="background-color: #f0f0f0;">
+                <col span="1" style="background-color: #f0f0f0;">
             </colgroup>
             <tr>
                 <th>Project</th>
