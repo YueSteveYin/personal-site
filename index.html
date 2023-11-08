@@ -3,165 +3,105 @@
   <head>
     <meta charset="UTF-8">
     <title>Steve's Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Steve Yin">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href = "/pages/general.css">
     <style>
-        h1 {background-color: blue;}
+        h1 {
+            text-align: center;
+            font-size: 5vw;
+        }
+        main{
+            margin-top: 20vh;
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            justify-content: space-around;
+            padding: 3vw;
+            flex-wrap:wrap;
+            height: 100%;
+        }
+        a{
+            width:12vw;
+            display: block;
+            border:1px solid;
+            background-color: black;
+            line-height: 12vw;
+            margin-left: 3vw;
+            margin-right: 3vw;
+            text-align: center;
+            aspect-ratio: 1/1;
+            color:white;
+            font-size: 2vw;
+            margin-bottom: 6vw;
+            font-family: fantasy;
+            text-decoration: none;
+        }
+        a:hover{
+            background-color: aquamarine;
+            color: black;
+            animation: shake 0.5s ease;
+        }
+
+        footer{
+            font-weight: bold;
+            font-size: 1.5vw;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        @media (min-width: 1440px){
+            h1{
+                font-size:73px;
+            }
+            a{
+                font-size: 30px;
+            }
+            footer{
+                font-size: 21px;
+            }
+        }
+        @media (max-width: 900px){
+            a{
+                font-size: 18px;
+                width : 150px;
+                line-height: 108px;
+            }
+            h1{
+                font-size: 45px;
+            }
+            footer{
+                font-size: 20px
+            }
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
     </style>
   </head>
   <body>
-    <header>
-        <h1>Welcome to Steve Yin's Website</h1>
-        <nav>
-            <ul>
-                <li><a href="/pages/...">About Me</a></li>
-                <li><a href="/pages/...">Past jobs</a></li>
-                <li><a href="/pages/...">Experience</a></li>
-                <li><a href="/pages/...">Projects</a></li>
-                <li><a href="/pages/...">Interest</a></li>
-            </ul>
-        </nav>
-    </header>
+    <h1>Welcome to Steve Yin's Site</h1>
     <main>
-        <h2>Introduction</h2>
-        <section>
-            <p>Hi My Name is <b>Yue Yin</b> and I go by <strong>Steve</strong></p>
-            <picture>
-                <source srcset="src/profilepic.jpg" type="image/jpg">
-                <!---may use other photos make it responsive-->
-                <img src="src/profilepic.jpg" alt="Image of Steve Yin">
-            </picture>
-            <div>
-                <p>
-                    I am currently on the pursue of my <em>Computer Engineering</em> 
-                    Master Degree in <i>UCSD</i> <br> And I managed to graduate in <b>3 years</b>
-                    due to my planning and hardwork. 
-                </p>
-                <p>the code below summarized a period of my college life: </p>
-            </div>
-            <pre>
-                <code>
-Person me = new Person();
-while(me.alive){
-    me.wake();
-    me.Eat();
-    me.code();
-    me.sleep();
-}
-                </code>
-            </pre>
-            <aside>
-                <p>this is a little over exatratted but it's true</p>
-            </aside>
-        </section>
-        <hr>
-        <section>
-            <h3><span>3 Facts</span> about me</h3>
-                <ol>
-                    <li>I moved to America when I was in high school</li>
-                    <li>I like to travel around the world</li>
-                    <li>I do a lot of sports but never watch their match</li>
-                </ol>
-        </section>
-        <iframe src="https://www.example.com"></iframe>
-        <audio controls>
-            <source src="src/background.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-        <video controls>
-            <source src="src/Studio_Project.mp4" type="video/mp4">
-            Your browser does not support the video element.
-        </video>
-
-        <canvas id="canvas" width="200" height="100"></canvas>
-        <script type="application/javascript">
-            function draw() {
-              const canvas = document.getElementById("canvas");
-              if (canvas.getContext) {
-                const ctx = canvas.getContext("2d");
-      
-                ctx.fillStyle = "rgb(200, 0, 0)";
-                ctx.fillRect(10, 10, 50, 50);
-                ctx.beginPath();
-                ctx.moveTo(10, 10);
-                ctx.lineTo(100, 100);
-                ctx.lineTo(100, 10);
-                ctx.fill();
-              }
-            }
-            draw();
-        </script>
-        <svg width="100" height="100">
-            <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
-        </svg>
-        <h2>Question and Comments</h2>
-        <form>
-            <label for="inputField">your email</label>
-            <input type="text" id="inputField">
-            <fieldset>
-                <legend>do you like this site</legend>
-                <input type="radio" name="radioGroup" value="yes"> Yes<br>
-                <input type="radio" name="radioGroup" value="No"> No<br>
-            </fieldset>
-            <label>what do you want to say to me?</label>
-            <textarea></textarea><br>
-            <label>which page needs imporvement</label>
-            <input list="improvement" name="improvement_select" id="improvement_select">
-            <datalist id="improvement">
-                <option value="Home">
-                <option value="about">
-                <option value="experience">
-                <option value="job">
-                <option value="project">
-                <option value="interest">
-            </datalist><br>
-            <label>what do you like the most about this page</label>
-            <select>
-                <optgroup label="pages">
-                    <option value="Home">Home</option>
-                    <option value="about">about</option>
-                    <option value="experience">experience</option>
-                    <option value="job">job</option>
-                    <option value="project">project</option>
-                    <option value="interest">interest</option>
-                </optgroup>
-                <optgroup label = "texts">
-                    <option value="Introduction">Introduction</option>
-                    <option value="peronal statement">peronal statement</option>
-                </optgroup>
-            </select>
-            <input type="submit">
-        </form>
-        <details>
-            <summary>Click to find out </summary>
-            <p>Hidden content goes here.</p>
-        </details>
-        <template id="myTemplate">
-            <p>show me if you want</p>
-        </template>
-        <table>
-            <caption>record of experience</caption>
-            <colgroup>
-                <col span="1" style="background-color: #e0e0e0;">
-                <col span="1" style="background-color: #f0f0f0;">
-            </colgroup>
-            <tr>
-                <th>Project</th>
-                <th>jobs</th>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>2</td>
-            </tr>
-        </table>
-        <figure>
-            <img src="/src/flower.jpg" alt="flower Image">
-            <figcaption>Thank you</figcaption>
-        </figure>
-        <button>back to top</button>
-    </main> 
-    <footer>
-        <p>Created by Steve Yin</p>
+        <a href="/pages/about.html">
+            About
+        </a>
+        <a href="/pages/experience.html">
+            Experience
+        </a>
+        <a href="/pages/projects.html">
+            Projects
+        </a>
+        <a href="/pages/interests.html">
+            Interest
+        </a>
+    </main>
+    <footer> 
+        <p style = "text-align: center">Created By Steve Yin</p>
     </footer>
   </body>
 </html>
