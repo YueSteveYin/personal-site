@@ -43,6 +43,7 @@ nav>a{
     font-family: fantasy;
 }
 a:hover{
+    transition: color, 0.5s;
     background-color: aquamarine;
     color: black;
 }
