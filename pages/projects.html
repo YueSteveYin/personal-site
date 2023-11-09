@@ -7,6 +7,9 @@
     <meta name="author" content="Steve Yin">
     <link rel="stylesheet" href = "general.css">
     <style>
+        :root{
+            --aqua: color-mix(in srgb, #00FFFF 100%, white);
+        }
         main{
             margin-top: 3dvh;
             display: flex;
@@ -21,7 +24,7 @@
             margin-top: 1.5vmax;
             margin-bottom: 1.5vmax;
             text-align: center;
-            background-color: color-mix(in srgb, #00FFFF 100%, white);
+            background-color: var(--aqua, aqua);
             width: 50%;
             border-radius: 10px;
             padding: 1vw;
