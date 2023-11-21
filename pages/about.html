@@ -157,17 +157,20 @@ while(me.alive){
         </section>
         <section>
             <h2>Question and Comments</h2>
-            <form>
-                <label for="inputField">your email</label>
-                <input type="text" id="inputField">
-                <fieldset>
+            <form action="https://httpbin.org/post" method="post">
+                <label for="name">your name *</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">your email *</label>
+                <input type="email" id="email" name="email" required>
+                <!-- <fieldset>
                     <legend>do you like this site</legend>
                     <input type="radio" name="radioGroup" value="yes"> Yes<br>
                     <input type="radio" name="radioGroup" value="No"> No<br>
-                </fieldset>
-                <label>what do you want to say to me?</label>
-                <textarea></textarea><br>
-                <label>which page needs imporvement</label>
+                </fieldset> -->
+                <label for="comments" name="comments">what do you want to say to me? *</label>
+                <input type = "text" required name="comments" style = "word-break: break-word;" minlength="3"
+                pattern="[A-Za-z0-9,._!@%$#&]+" title="please use following characters: A-Za-z0-9-,._!@%$#&"><br>
+                <!-- <label>which page needs imporvement</label>
                 <input list="improvement" name="improvement_select" id="improvement_select">
                 <datalist id="improvement">
                     <option value="Home">
@@ -191,9 +194,12 @@ while(me.alive){
                         <option value="Introduction">Introduction</option>
                         <option value="peronal statement">peronal statement</option>
                     </optgroup>
-                </select>
+                </select> -->
+                <input type="hidden" name="possible_bot" value="true">
                 <input type="submit">
             </form>
+            <output class="error" style = "display:none;">Sorry, an error occured</output>
+            <output class="info" style = "display:none;">Info</output>
         </section>
         <section>
             <h3>My journey</h3>
