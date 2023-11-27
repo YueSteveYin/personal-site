@@ -317,7 +317,7 @@ while(me.alive){
                     });
                     $("#comments").keyup(validateTextarea);
                     function validateTextarea() {
-                        var errorMsg = "Please enter a valid character from below: A-Za-z0-9,._!@%$#&;. and make sure it's more than 3 characters and less than 1000 characters";
+                        var errorMsg = "Please enter a valid character from below: A-Za-z0-9,._!@%$#&;. and make sure it's more than 3 characters and less than 500 characters";
                         var textarea = this;
                         var pattern = new RegExp('^' + $(textarea).attr('pattern') + '$');
                         // check each line of text
