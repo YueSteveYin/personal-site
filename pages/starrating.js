@@ -5,8 +5,8 @@ class ratingWidget extends HTMLElement{
 
         //create basic element
         const form = document.createElement('form');
-        // form.setAttribute('action', 'https://httpbin.org/post');
-        // form.setAttribute('method', 'POST');
+        form.setAttribute('action', 'https://httpbin.org/post');
+        form.setAttribute('method', 'POST');
 
         const title = document.createElement('label');
         title.setAttribute("id", "rating title")
@@ -19,8 +19,8 @@ class ratingWidget extends HTMLElement{
         ratingInput.setAttribute('name', 'rating');
         ratingInput.setAttribute('min', '1');
         ratingInput.setAttribute('max', '5');
-        ratingInput.setAttribute('value', '0');
         ratingInput.setAttribute('required', '');
+        ratingInput.style.display = "none";
 
         const submit = document.createElement('button');
         submit.setAttribute('type', 'submit');
@@ -55,7 +55,9 @@ class ratingWidget extends HTMLElement{
 
         form.appendChild(title);
         form.appendChild(stars);
+        form.appendChild(ratingInput);
         form.appendChild(submit);
+
 
         shadow.appendChild(form);
         shadow.appendChild(style);
@@ -63,6 +65,13 @@ class ratingWidget extends HTMLElement{
         let starbutton = this.shadowRoot.querySelectorAll(".star");
         starbutton.forEach(star => {
             star.addEventListener('click', () => {
+                let deleteComment = this.shadowRoot.querySelectorAll(".responses");
+                console.log(deleteComment);
+                if (deleteComment) {
+                    deleteComment.forEach(comment => {
+                        comment.parentNode.removeChild(comment);
+                    });
+                }
                 const value = star.dataset.value;
                 ratingInput.value = value;
                 for(let i = 0; i<starbutton.length; i++){
@@ -72,29 +81,48 @@ class ratingWidget extends HTMLElement{
                         starbutton[i].style.color = "#ccc";
                     }
                 }
+                const responses = document.createElement('label');
+                responses.setAttribute("class", "responses");
+                responses.setAttribute('for', 'rating');
+                if(value >= 4){
+                    responses.textContent = 'Thank you for ' + value + " rating! Happy to see you like it!";
+                    form.appendChild(responses);
+                }else if(value<=2){
+                    responses.textContent = 'Sorry for the ' + value + " star experience, I will try to do better!";
+                    form.appendChild(responses);
+                }else{
+                    responses.textContent = 'Thank you for ' + value + " rating";
+                    form.appendChild(responses);
+                }
                 submit.click();
             });
         });
+
+                
+
+        const headers = new Headers();
+        headers.append('X-Sent-By', 'JS');
+
         form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission behavior
+            event.preventDefault(); 
 
             const formData = new FormData(form);
+            formData.append('sentBy', 'js');
+            formData.append("ratingInput", ratingInput.value);
             fetch('https://httpbin.org/post', {
                 method: 'POST',
-                body: formData
+                headers: headers, 
+                body: formData, 
             })
             .then(response => {
                 if (response.ok) {
-                console.log('Form submitted successfully');
-                // You can add additional handling here, such as showing a success message
+                    console.log('Form submitted successfully');
                 } else {
-                console.error('Form submission failed');
-                // Handle error cases if needed
+                    console.error('Form submission failed');
                 }
             })
-            .catch(error => {3
+            .catch(error => {
                 console.error('Error:', error);
-                // Handle error cases if needed
             });
         });
     }
