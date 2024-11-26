@@ -5,95 +5,156 @@
     <title>Steve's Website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Steve Yin">
-    <link rel="stylesheet" href = "pages/general.css">
+    <link rel="stylesheet" href="pages/general.css">
     <style>
-        :root{
+        :root {
             --black: #000000;
+            --cursor-color: black;
         }
         body {
-            background-image: url("src/homebackground.jpg");
+            background-image: url("src/background.png");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            justify-content: center;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-        } 
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevent overflow causing scrollbars */
+        }
         h1 {
             text-align: center;
             font-size: 5vw;
+            margin-top: 10vh;
         }
-        main{
-            margin-top: 15dvh;
+        main { /* Adjusted to prevent overflow */
             display: flex;
             flex-direction: row;
             text-align: center;
-            justify-content: space-around;
-            padding: 3dvw;
-            flex-wrap:wrap;
-            height: 100%;
+            justify-content: center; /* Ensure elements stay within bounds */
+            padding: 2dvw; /* Reduce padding to prevent overflow */
+            flex-wrap: wrap;
+            width: calc(100% - 4dvw); /* Prevent horizontal overflow */
+            box-sizing: border-box;
         }
-        a{
-            width:12vw;
+        a {
+            width: 12vw;
             display: block;
-            border:1px solid;
-            background-color: var(--black, black);
             line-height: 12vw;
-            margin-left: 3vw;
-            margin-right: 3vw;
+            margin: 2vw; /* Reduced margin to fit better */
             text-align: center;
-            aspect-ratio: 1/1;
-            color:white;
+            color: white;
             font-size: 2vw;
-            margin-bottom: 6vw;
-            font-family: fantasy;
             text-decoration: none;
+            position: relative;
+            padding-bottom: 12vw; /* Space for the image */
+            box-sizing: border-box;
         }
-        a:hover{
-            background-color: aquamarine;
-            color: black;
-            animation: shake 0.5s ease;
-        }
-        @media (min-width: 1440px){
-            h1{
-                font-size:73px;
+        @media (min-width: 1440px) {
+            h1 {
+                font-size: 73px;
             }
-            a{
+            a {
                 font-size: 30px;
             }
         }
-        @media (max-width: 900px){
-            a{
+        @media (max-width: 900px) {
+            a {
                 font-size: 18px;
-                width : 150px;
+                width: 150px;
                 line-height: 108px;
+                padding-bottom: 150px;
             }
-            h1{
+            h1 {
                 font-size: 45px;
             }
         }
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
+        .display-container{
+            display: grid;
+            place-items: center;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        .background{
+            background-color: #ddd;
+            border-radius: 2rem;
+            aspect-ratio: 1;
+            width: 100%;
+            position: absolute;
+            transition: transform 1s;
+            top:0;
+            box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
+        }
+        img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: auto;
+            background: transparent;
+            transition: transform 1s;
+            top:0;
+            z-index: 1;
+        }
+        .display-container:hover .background {
+            transform: translateZ(100px) rotateX(75deg);
+            box-shadow: 10px 10px 10px #333333;
+        }
+        .display-container:hover img{
+            transform: translateY(-50px) translateZ(250px);
+        }
+        .typing {
+            border-right: 3px solid var(--cursor-color);
+            animation: blinking 1s steps(1, end) infinite, typing 3s steps(27, end);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        @keyframes blinking {
+            0% { border-color: transparent }
+            50% { border-color: var(--cursor-color); }
+            100% { border-color: transparent }
+        }
+        @keyframes typing {
+            0% { width: 0 }
+            100% { width: 100% }
         }
     </style>
   </head>
   <body>
-    <h1>Welcome to Steve Yin's Site</h1>
+    <div style="display: inline-block">
+        <h1 class="typing">Welcome to Steve Yin's Site</h1>
+    </div>
     <main>
         <a href="pages/about.html">
-            About
+            <span>About</span>
+            <div class = "display-container">
+                <div class = "background"></div>
+                <img src="src/about.png" alt="About Icon">
+            </div>
         </a>
         <a href="pages/experience.html">
-            Experience
+            <span>Experience</span>
+            <div class = "display-container">
+                <div class = "background"></div>
+                <img src="src/job.png" alt="Experience Icon">
+            </div>
         </a>
         <a href="pages/projects.html">
-            Projects
+            <span>Projects</span>
+            <div class = "display-container">
+                <div class = "background"></div>
+                <img src="src/project.png" alt="Projects Icon">
+            </div>
         </a>
         <a href="pages/interests.html">
-            Interest
+            <span>Timeline</span>
+            <div class = "display-container">
+                <div class = "background"></div>
+                <img src="src/time.png" alt="Timeline Icon">
+            </div>
+            
         </a>
     </main>
   </body>

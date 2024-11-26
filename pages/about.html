@@ -112,25 +112,12 @@
             100% { opacity: 1; }
         }
     </style>
-    <noscript>
-        <style type = "text/css">
-            .switch{
-                display: none;
-            }
-        </style>
-    </noscript>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="general.js"></script>
   </head>
   <body>
     <header>
         <h1>About Me</h1>
-        <label class="switch">
-            <input id="dark" type="checkbox" />
-            <span class="slider round">
-                <i class="fas fa-assistive-listening-systems fa-lg"></i>
-            </span>
-        </label>
         <nav>
             <a href="../index.html">
                 Home
@@ -154,245 +141,15 @@
             <h2>Introduction</h2>
             <div id = "introtext">
                 <p>
-                    Hi My Name is <b>Yue Yin</b> and I go by <strong>Steve</strong>
-                    I am currently on the pursue of my <em>Computer Engineering</em> 
-                    Master Degree in <i>UCSD</i> And I managed to graduate in 3 years
+                    Hi My Name is Yue Yin and I go by Steve
+                    I am currently on the pursue of my Computer Engineering
+                    Master Degree in UCSD And I managed to graduate in 3 years
                     due to my planning and hardwork. Next, I'm going to graduate school
                     and pursue a master degree of Computer Science.
                 </p>
                 <img src="../src/profilepic.jpg" alt="Image of Steve Yin" width = 30%>
             </div>
         </section>
-        <section id = "secondpanel">
-            <div id = "language">
-                <h3>My languages</h3>
-                <sub>(rank from most familiar to least familiar)</sub>
-                <ol>
-                    <li>Mandarin</li>
-                    <li>English</li>
-                    <li>Javascript</li>
-                    <li>Java</li>
-                    <li>Python</li>
-                    <li>rest(C, C++, assembly, etc)</li>
-                </ol>
-            </div>
-            <div id = "meme">
-                <h3>Here is a meme that I really like</h3>
-                <div>
-                    <pre>
-                        <code>
-Person me = new Person();
-while(me.alive){
-    me.wake();
-    me.Eat();
-    me.code();
-    me.sleep();
-}
-                        </code>
-                    </pre>
-                    <aside style = "width: 30%;">
-                        <p>this is a little dramatic but it's true</p>
-                    </aside>
-                </div>
-            </div>
-
-            <weather-widget><p>Current Weather Conditions Unavailable</p></weather-widget>
-            <script src="weather.js"></script>
-        </section>
-        <section>
-            <h2>Question and Comments</h2>
-            <form action="https://httpbin.org/post" method="post">
-                <label for="name">your name *</label>
-                <input type="text" pattern="[A-Za-z,. ]+" class = "input"  id="name" name="name" required>
-                <label for="email">your email *</label>
-                <input type="email" class = "input"  id="email" name="email" required>
-                <!-- <fieldset>
-                    <legend>do you like this site</legend>
-                    <input type="radio" name="radioGroup" value="yes"> Yes<br>
-                    <input type="radio" name="radioGroup" value="No"> No<br>
-                </fieldset> -->
-                <label for="comments" name="comments">what do you want to say to me? *</label>
-                <textarea type = "text" class = "input"  name="comments" id = "comments" minlength="3"
-                pattern="[A-Za-z0-9,._!@%$#&; ]+" maxlength = "500" style = "height: 10vh;" required></textarea>
-                <div id="infoMessage"></div><br>
-                <!-- <label>which page needs imporvement</label>
-                <input list="improvement" name="improvement_select" id="improvement_select">
-                <datalist id="improvement">
-                    <option value="Home">
-                    <option value="about">
-                    <option value="experience">
-                    <option value="job">
-                    <option value="project">
-                    <option value="interest">
-                </datalist><br>
-                <label>what do you like the most about this page</label>
-                <select>
-                    <optgroup label="pages">
-                        <option value="Home">Home</option>
-                        <option value="about">about</option>
-                        <option value="experience">experience</option>
-                        <option value="job">job</option>
-                        <option value="project">project</option>
-                        <option value="interest">interest</option>
-                    </optgroup>
-                    <optgroup label = "texts">
-                        <option value="Introduction">Introduction</option>
-                        <option value="peronal statement">peronal statement</option>
-                    </optgroup>
-                </select> -->
-                <input type="hidden" name="possible_bot" value="true">
-                <input type="hidden" id ="form_errors" name="form_errors" value="true">
-                <input type="submit">
-                           
-                <output id = "error"></output>
-                <output id ="info"></output>
-                <script>
-                    let form_errors = [];
-                    let inputs = document.querySelectorAll(".input");
-                    let errorMessage = document.getElementById('error');
-                    let comment = document.getElementById("comments");
-                    let email = document.getElementById("email");
-                    let name = document.getElementById("name");
-                    let error = document.getElementById("error");
-                    let submit = document.querySelector('input[type="submit"]');
-                    inputs.forEach(function(element) {
-                        element.addEventListener("input", function(event) {
-                            let allowedtext ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,_!@%$#&.; ";
-                            let message = "";
-                            element.setCustomValidity("");
-                            let validity = element.checkValidity();
-                            if(!validity){
-                                if(element == name){
-                                    allowedtext = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz._  ";
-                                    message = "Please enter a valid name from below character: A-Za-z._ ";
-                                    name.setCustomValidity("Please enter a valid name from below character: A-Za-z._ ");
-                                }
-                                if(element == comment){
-                                    message = "Please enter a valid character from below: A-Za-z0-9,._!@%$#&;. and make sure it's more than 3 characters and less than 1000 characters";
-                                    comment.setCustomValidity("Please enter a valid character from below: A-Za-z0-9,._!@%$#&;. and make sure it's more than 3 characters and less than 1000 characters");
-                                }
-                                if(element == email){
-                                    email.setCustomValidity("Please enter a valit email ");
-                                }
-                            } else{
-                                element.setCustomValidity("");
-                            }
-                            if(element == comment){
-                                const currentLength = comment.value.length;
-                                const remainingChars = 500 - currentLength;
-                                infoMessage.textContent = "Characters left:" + remainingChars;
-                                if(remainingChars < 50){
-                                    comment.classList.add("warning");
-                                }else if(remainingChars < 0){
-                                    valid = false;
-                                }else{
-                                    comment.classList.remove("warning");
-                                }
-                            }
-                            let userInput = event.target.value;
-                            let valid = true;
-                            element.classList.remove('errorinput');
-                            error.classList.remove('errorinput');
-                            error.classList.remove("flash");
-                            error.innerText = "";
-                            for(let i = 0; i<userInput.length; i++){
-                                if(!allowedtext.includes(userInput.at(i))){
-                                    valid = false;
-                                    break;
-                                }
-                            }
-                            if (!valid) {
-                                if(element == name){
-                                    form_errors.push({ field: "name", error: "invalid_character"});
-                                }
-                                element.classList.add('errorinput');
-                                error.innerText = "only below characters are allowed: A-Za-z0-9,._!@%$#&.";
-                                error.classList.add("errorinput");
-                                error.classList.add("flash");
-
-                                setTimeout(function() {
-                                    error.classList.remove('errorinput');
-                                    error.classList.remove("flash");
-                                    error.innerText = "";
-                                }, 3000);
-                            }
-                        }); 
-                    });
-                    jQuery('#comments').on('keyup', function() {
-                        this.setCustomValidity("");
-                        if(!this.checkValidity()){
-                            this.setCustomValidity("Please enter a valid character from below: A-Za-z0-9,._!@%$#&;. and make sure it's more than 3 characters and less than 1000 characters");
-                        }else{
-                            this.setCustomValidity("");
-                        }
-                    });
-                    $("#comments").keyup(validateTextarea);
-                    function validateTextarea() {
-                        var errorMsg = "Please enter a valid character from below: A-Za-z0-9,._!@%$#&;. and make sure it's more than 3 characters and less than 500 characters";
-                        var textarea = this;
-                        var pattern = new RegExp('^' + $(textarea).attr('pattern') + '$');
-                        // check each line of text
-                        $.each($(this).val().split("\n"), function () {
-                            // check if the line matches the pattern
-                            var hasError = !this.match(pattern);
-                            if (typeof textarea.setCustomValidity === 'function') {
-                                textarea.setCustomValidity(hasError ? errorMsg : '');
-                                if(hasError){
-                                    form_errors.push({ field: "comment", error: "invalid_character"});
-                                }
-                            } else {
-                                // Not supported by the browser, fallback to manual error display...
-                                $(textarea).toggleClass('error', !!hasError);
-                                $(textarea).toggleClass('ok', !hasError);
-                                if (hasError) {
-                                    $(textarea).attr('title', errorMsg);
-                                } else {
-                                    $(textarea).removeAttr('title');
-                                }
-                            }
-                            return !hasError;
-                        });
-                    }
-
-                    submit.addEventListener("click", function(){
-                        if(!email.checkValidity()){
-                            form_errors.push({ field: "email", error: "bad_format"});
-                        }
-                        if(comment.value.length<3){
-                            form_errors.push({ field: "comment", error: "short_comment"});
-                        }
-                    });
-
-                    document.querySelector("form").addEventListener('submit', function(event) {
-                        event.preventDefault();
-                        const formErrorsJSON = JSON.stringify(form_errors);
-                        document.querySelector("#form_errors").value = formErrorsJSON;
-                        this.submit();
-                    });
-                    
-                </script> 
-            </form>
-            <rating-widget>
-                <form action = "https://httpbin.org/post" method = "POST">
-                    <label for="rating">How Satisfied are you? </label>
-                    <input type = "hidden" nme = "qeustion" value = "How Satisfied are you?">
-                    <input type = "hidden" name = "sentBy" value = "HTML">
-                    <input type = "number" id = "rating" name = "rating" min = "1" max = "5" value="0" required>
-                    <button type = "submit">submit</button>
-                </form>
-            </rating-widget>
-            <script src="starrating.js"></script>
-        </section>
-        <section>
-            <h3>My journey</h3>
-            <div>
-                <p>timeline to be inserted here in the future</p>
-            </div>
-        </section>
-        <video controls style="width: 50%;">
-            <source src="../src/Studio_Project.mp4" type="video/mp4">
-            Your browser does not support the video element.
-        </video>
     </main> 
     <footer> 
         <p>Created By Steve Yin</p>
