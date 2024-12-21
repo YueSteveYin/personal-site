@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Steve Yin - Dynamic Pages</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="general.css">
+    <style>
+      nav a {
+        margin: 0 15px;
+        cursor: pointer;
+      }
+      main {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      main.loaded {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href = "../index.html">
+        <h1>Steve Yin</h1>
+      </a>
+      <nav>
+        <a onclick="loadPage('about')">About</a>
+        <a onclick="loadPage('experience')">Experience</a>
+        <a onclick="loadPage('projects')">Projects</a>
+        <a onclick="loadPage('timeline')">Timeline</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Component content loads here -->
+    </main>
+
+    <footer>
+      <p>Created by Steve Yin</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

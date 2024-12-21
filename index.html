@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Steve Yin">
     <link rel="stylesheet" href="pages/general.css">
+    <link type="module" href = "pages/script.js">
     <style>
         :root {
             --black: #000000;
@@ -87,6 +88,18 @@
             top:0;
             box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
         }
+        .shadow{
+            border-radius: 50%;
+            width: 50%;
+            height: 50%;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            transition: all 1s ease;
+            background-color: rgba(0, 0, 0, 0);
+            aspect-ratio: 1;
+        }
         img {
             position: absolute;
             left: 0;
@@ -100,10 +113,13 @@
         }
         .display-container:hover .background {
             transform: translateZ(100px) rotateX(75deg);
-            box-shadow: 10px 10px 10px #333333;
         }
         .display-container:hover img{
             transform: translateY(-50px) translateZ(250px);
+        }
+        .display-container:hover .shadow{
+            background-color: rgba(0, 0, 0, 0.5);
+            transform: translate(-50%, -50%) scale(1.2); 
         }
         .typing {
             border-right: 3px solid var(--cursor-color);
@@ -127,31 +143,39 @@
         <h1 class="typing">Welcome to Steve Yin's Site</h1>
     </div>
     <main>
-        <a href="pages/about.html">
+        <a href="pages/base.html?page=about">
             <span>About</span>
             <div class = "display-container">
-                <div class = "background"></div>
+                <div class = "background">
+                    <div class = "shadow"></div>
+                </div>
                 <img src="src/about.png" alt="About Icon">
             </div>
         </a>
-        <a href="pages/experience.html">
+        <a href="pages/base.html?page=experience">
             <span>Experience</span>
             <div class = "display-container">
-                <div class = "background"></div>
+                <div class = "background">
+                    <div class = "shadow"></div>
+                </div>
                 <img src="src/job.png" alt="Experience Icon">
             </div>
         </a>
-        <a href="pages/projects.html">
+        <a href="pages/base.html?page=projects">
             <span>Projects</span>
             <div class = "display-container">
-                <div class = "background"></div>
+                <div class = "background">
+                    <div class = "shadow"></div>
+                </div>
                 <img src="src/project.png" alt="Projects Icon">
             </div>
         </a>
-        <a href="pages/interests.html">
+        <a href="pages/base.html?page=timeline">
             <span>Timeline</span>
             <div class = "display-container">
-                <div class = "background"></div>
+                <div class = "background">
+                    <div class = "shadow"></div>
+                </div>
                 <img src="src/time.png" alt="Timeline Icon">
             </div>
             
