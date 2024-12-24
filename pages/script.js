@@ -34,59 +34,90 @@ window.onload = () => {
 
 
 
+let slideIndex = 0;
 const contentDir = './components/experience_contents/';
-const experiences = ['experience1.txt', 'experience2.txt'];
+const experiences = ['experience1.txt', 'experience2.txt', 'experience3.txt', 'experience4.txt', 'experience5.txt'];
 
+// Load experiences and add dots dynamically
 async function loadExperiences() {
-    const slideshowContainer = document.querySelector('.slideshow-container');
-    
-    if (!slideshowContainer) {
-        console.error("Slideshow container not found.");
+    const slidesTrack = document.getElementById('slidesTrack');
+    const dotsContainer = document.getElementById('dotsContainer');
+
+    if (!slidesTrack || !dotsContainer) {
+        console.error("Slideshow or dots container not found.");
         return;
     }
 
+    slidesTrack.innerHTML = '';  // Clear existing slides
+    dotsContainer.innerHTML = '';  // Clear existing dots
+
+    // Fetch and add slides
     for (let i = 0; i < experiences.length; i++) {
         const response = await fetch(contentDir + experiences[i]);
         if (response.ok) {
             const text = await response.text();
             const [title, position, time, description, site] = text.split('\n');
 
-            // Create slide element
+            // Create slide
             const slide = document.createElement('div');
-            slide.classList.add('mySlides', 'fade');
-
+            slide.classList.add('mySlide');
             slide.innerHTML = `
-                <div class="slide-content">
-                    <h2>${title}</h2>
-                    <p class="position-time">${position} | ${time}</p>
-                    <div class="description">
-                        <p>${description}</p>
-                    </div>
-                    ${site ? `<a href="${site}" target="_blank" class="site-link">Visit Site</a>` : ''}
+                <h2>${title}</h2>
+                <p class="position-time">${position} | ${time}</p>
+                <div class="description">
+                    <p>${description}</p>
                 </div>
+                ${site ? `<a href="${site}" target="_blank">Visit Site</a>` : ''}
             `;
+            slidesTrack.appendChild(slide);
 
-            slideshowContainer.insertBefore(slide, slideshowContainer.querySelector('.prev'));
+            // Create corresponding dot
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            dot.setAttribute('onclick', `setSlide(${i})`);
+            dotsContainer.appendChild(dot);
         }
     }
 
-    showSlides(slideIndex);
+    // Set initial slide position and activate first dot
+    updateSlidePosition();
+    updateDots();
 }
 
-let slideIndex = 0;
-
-// Next/previous controls
+// Move slides left or right
 function moveSlide(n) {
-  showSlides(slideIndex += n);
+    const slides = document.querySelectorAll('.mySlide');
+    const totalSlides = slides.length;
+
+    slideIndex += n;
+
+    if (slideIndex >= totalSlides) {
+        slideIndex = 0;
+    } else if (slideIndex < 0) {
+        slideIndex = totalSlides - 1;
+    }
+
+    updateSlidePosition();
+    updateDots();
 }
 
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    if (n > slides.length-1) {slideIndex = 0}
-    if (n < 0) {slideIndex = slides.length-1}
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    slides[slideIndex].style.display = "block";
+// Set slide based on dot click
+function setSlide(n) {
+    slideIndex = n;
+    updateSlidePosition();
+    updateDots();
+}
+
+// Update slide position using translateX
+function updateSlidePosition() {
+    const slidesTrack = document.getElementById('slidesTrack');
+    const slideWidth = document.querySelector('.mySlide').clientWidth;
+    slidesTrack.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+}
+
+// Update dot appearance
+function updateDots() {
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[slideIndex].classList.add('active');
 }

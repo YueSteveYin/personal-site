@@ -1,20 +1,43 @@
-<section style = "display: flex; flex-direction: row; align-items: center; align-content: space-around;">
-    <button class="carousel-btn left" onclick="moveSlide(-1)">❮</button>
-    <div class="slideshow-container">
-        
-    </div>
-    <button class="carousel-btn right" onclick="moveSlide(1)">❯</button>
+<section style = "overflow: hidden;">
+    <section class="carousel-wrapper">
+        <button class="carousel-btn left" onclick="moveSlide(-1)">❮</button>
+        <div class="slideshow-container">
+            <div class="slides-track" id="slidesTrack">
+                <!-- Slides will be dynamically inserted here -->
+            </div>
+        </div>
+        <button class="carousel-btn right" onclick="moveSlide(1)">❯</button>
+    </section>
+    <div class="dots-container" id="dotsContainer"></div>
     <style>
-        .slideshow-container {
-            position: relative;
+        .carousel-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            width: 80%;
             margin: auto;
-            width: 60%;
         }
 
-        .mySlides {
-            display: none;
+        .slideshow-container {
+            overflow: hidden;  /* Hides non-active slides */
+            width: 100%;
         }
 
+        .slides-track {
+            display: flex;
+            transition: transform 0.6s ease;  /* Smooth slide transition */
+        }
+
+        .mySlide {
+            flex: 0 0 100%;  /* Each slide takes full width */
+            box-sizing: border-box;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to bottom, #f9f9f9, #eaeaea);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
         .carousel-btn {
             /* transform: translateY(-50%); */
             background: rgba(0, 0, 0, 0.7);
@@ -36,57 +59,63 @@
 
         .carousel-btn.left {
             margin-left: 10%;
+            margin-right: 5%;
         }
 
         .carousel-btn.right {
             margin-right: 10%;
+            margin-left: 5%;
         }
 
-        /* Caption text */
-        .text {
-            color: #f2f2f2;
-            font-size: 15px;
-            padding: 8px 12px;
-            position: absolute;
-            bottom: 8px;
-            width: 100%;
+        .slide-content h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .position-time {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .description p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .site-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .site-link:hover {
+            text-decoration: underline;
+        }
+
+        .dots-container {
             text-align: center;
+            margin-top: 3vh;
         }
 
-        /* Number text (1/3 etc) */
-        .numbertext {
-            color: #f2f2f2;
-            font-size: 12px;
-            padding: 8px 12px;
-            position: absolute;
-            top: 0;
-        }
-
-        /* The dots/bullets/indicators */
         .dot {
             cursor: pointer;
             height: 15px;
             width: 15px;
-            margin: 0 2px;
+            margin: 0 5px;
             background-color: #bbb;
             border-radius: 50%;
             display: inline-block;
             transition: background-color 0.6s ease;
         }
 
-        .active, .dot:hover {
+        .dot.active {
             background-color: #717171;
-        }
-
-        /* Fading animation */
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-
-        @keyframes fade {
-            from {opacity: .4}
-            to {opacity: 1}
         }
     </style>
 </section>
