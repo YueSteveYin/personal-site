@@ -1,2 +1,144 @@
 <section>
+    <h1>About Me</h1>
+    <!-- Introduction Section -->
+    <div id="page_container">
+        <section class="intro">
+            <div class="image-container">
+                <img src="../../src/self.jpg" alt="Your Profile Picture">
+            </div>
+            <div class="intro-text">
+                <h2>Hello! I'm Steve Yin</h2>
+                <p>
+                    I’m a passionate software engineer with a love for building dynamic and efficient applications.
+                    My journey in programming started in college, and since then, I've worked on a variety of projects,
+                    ranging from web development to AI applications.
+                </p>
+            </div>
+        </section>
+        <!-- Skills Section -->
+        <section class="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>Programming Languages: JavaScript, Python, C++</li>
+                <li>Web Development: HTML, CSS, React, Node.js</li>
+                <li>Tools: Git, Docker, VS Code</li>
+                <li>Machine Learning: TensorFlow, Scikit-learn</li>
+            </ul>
+        </section>
+        <!-- Interests Section -->
+        <section class="interests">
+            <h2>Interests</h2>
+            <p>
+                Apart from coding, I enjoy exploring photography, reading classical Chinese poetry, and
+                hiking in nature. I also have a keen interest in astronomy and love gazing at the stars.
+            </p>
+        </section>
+        <!-- Contact Section -->
+        <section class="contact">
+            <h2>Contact</h2>
+            <p>Feel free to reach out to me:</p>
+            <ul>
+                <li>Email: <a href="mailto:yuy045@ucsd.edu">yuy045@ucsd.edu</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/yue-yin-b09320217/">linkedin.com/in/yue-yin</a></li>
+                <li>GitHub: <a href="https://github.com/">github.com</a></li>
+            </ul>
+        </section>
+    </div>
+    <style>
+
+        #page_container {
+            padding: 3vw;
+            max-width: 80%;
+            margin: 5vh auto;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2vh;
+        }
+
+        section {
+            margin-bottom: 2vh;
+        }
+
+        .intro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2vh;
+            margin-bottom: 2vh;
+        }
+
+        .image-container img {
+            border-radius: 20%;
+            max-width: 150px;
+            height: 100%;
+            width: auto;
+            object-fit: cover;
+            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-text h2 {
+            font-size: 2rem;
+        }
+
+        .intro-text p {
+            font-size: 1rem;
+            text-align: center;
+            padding: 0 2vw;
+        }
+
+        .skills ul, .contact ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills ul li, .contact ul li {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .skills h2, .interests h2, .contact h2 {
+            font-size: 2rem;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .intro {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .intro-text p {
+                text-align: left;
+            }
+
+            .skills ul, .contact ul {
+                padding-left: 2vw;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .intro-text h2 {
+                font-size: 2.5rem;
+            }
+
+            .skills ul li, .contact ul li {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </section>

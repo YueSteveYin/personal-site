@@ -77,6 +77,8 @@
             place-items: center;
             transform-style: preserve-3d;
             position: relative;
+            height: 100%;
+            width : 100%
         }
         .background{
             background-color: #ddd;
@@ -102,20 +104,19 @@
         }
         img {
             position: absolute;
-            left: 0;
-            right: 0;
-            width: 100%;
+            top: 15%;
+            width: 70%;
             height: auto;
             background: transparent;
             transition: transform 1s;
-            top:0;
+
             z-index: 1;
         }
         .display-container:hover .background {
-            transform: translateZ(100px) rotateX(75deg);
+            transform: translateZ(100px) rotateX(75deg) translateY(80px);
         }
         .display-container:hover img{
-            transform: translateY(-50px) translateZ(250px);
+            transform: translateY(-100px) translateZ(250px);
         }
         .display-container:hover .shadow{
             background-color: rgba(0, 0, 0, 0.5);
@@ -149,7 +150,7 @@
                 <div class = "background">
                     <div class = "shadow"></div>
                 </div>
-                <img src="src/about.png" alt="About Icon">
+                <img src="src/document.png" alt="About Icon">
             </div>
         </a>
         <a href="pages/base.html?page=experience">
@@ -158,7 +159,7 @@
                 <div class = "background">
                     <div class = "shadow"></div>
                 </div>
-                <img src="src/job.png" alt="Experience Icon">
+                <img src="src/case.png" alt="Experience Icon">
             </div>
         </a>
         <a href="pages/base.html?page=projects">
@@ -167,7 +168,7 @@
                 <div class = "background">
                     <div class = "shadow"></div>
                 </div>
-                <img src="src/project.png" alt="Projects Icon">
+                <img src="src/wrench.png" alt="Projects Icon">
             </div>
         </a>
         <a href="pages/base.html?page=timeline">
@@ -176,7 +177,7 @@
                 <div class = "background">
                     <div class = "shadow"></div>
                 </div>
-                <img src="src/time.png" alt="Timeline Icon">
+                <img src="src/clock.png" alt="Timeline Icon">
             </div>
             
         </a>

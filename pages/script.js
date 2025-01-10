@@ -32,7 +32,12 @@ window.onload = () => {
     loadPage(page);
 };
 
-
+function resetScrollbar() {
+    const slideshowContainer = document.querySelector('.slideshow-container');
+    if (slideshowContainer) {
+        slideshowContainer.scrollTop = 0; // Reset vertical scrollbar
+    }
+}
 
 let slideIndex = 0;
 const contentDir = './components/experience_contents/';
@@ -106,6 +111,7 @@ function setSlide(n) {
     slideIndex = n;
     updateSlidePosition();
     updateDots();
+    resetScrollbar()
 }
 
 // Update slide position using translateX
@@ -113,6 +119,7 @@ function updateSlidePosition() {
     const slidesTrack = document.getElementById('slidesTrack');
     const slideWidth = document.querySelector('.mySlide').clientWidth;
     slidesTrack.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+    resetScrollbar()
 }
 
 // Update dot appearance
