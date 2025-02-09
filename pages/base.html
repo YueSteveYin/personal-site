@@ -11,7 +11,38 @@
         margin: 0 15px;
         cursor: pointer;
       }
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        height: 100vh; /* Ensure full viewport height */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Keep everything centered */
+        overflow: hidden; /* Prevent scrollbars */
+      }
+      
+      header {
+        width: 100%;
+        position: fixed;
+        top: 0;
+      }
+      
+      h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-top: 4vh; /* Adjust spacing */
+        margin-bottom: 1vh; /* Reduce bottom space */
+      }
+      
       main {
+        flex: 1; /* Take remaining space */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
         opacity: 0;
         transition: opacity 0.5s ease;
       }
@@ -30,7 +61,7 @@
         <a onclick="loadPage('timeline')">Timeline</a>
       </nav>
     </header>
-
+    <h1 id = "title"></h1>
     <main>
       <!-- Component content loads here -->
     </main>

@@ -1,5 +1,5 @@
 <section id="timeline">
-    <h1>Timeline</h1>
+    <div class="timeline-line"></div>
     <div class="timeline-container">
         <!-- Timeline Item 1 -->
         <div class="timeline-item left">
@@ -30,40 +30,61 @@
         </div>
     </div>
 </section>
+
 <style>
+
+    .timeline-line {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 5px;
+        height: 100%;
+        background-color:#007BFF;
+        transform: translateX(-50%);
+        animation: expandTimeline 0.5s ease-out;
+        transform-origin: top;
+    }
+
     #timeline {
-        padding: 20px;
         text-align: center;
         position: relative;
     }
-    
+
     .timeline-container {
         position: relative;
         max-width: 800px;
-        width:0;
+        width: 0;
         margin: 0 auto;
-        border-left: 5px solid #007BFF; /* Central line */
     }
-    
+
+    @keyframes expandTimeline {
+        from {
+            transform: scaleY(0);
+        }
+        to {
+            transform: scaleY(1); 
+        }
+    }
+
     .timeline-item {
         position: relative;
         padding-bottom: 3vh;
         margin-bottom: 20px;
-        width:30vw;
+        width: 30vw;
         display: flex;
         flex-direction: column;
     }
-    
+
     .timeline-item.left {
         transform: translateX(-130%);
         text-align: right;
     }
-    
+
     .timeline-item.right {
         transform: translateX(30%);
         text-align: left;
     }
-    
+
     .timeline-bump {
         width: 20px;
         height: 20px;
@@ -72,13 +93,17 @@
         z-index: 10;
     }
 
-    .timeline-item.left .timeline-bump{
-        align-self: flex-end;
-        animation: slideInRight 0.5s ease;
+    @keyframes expandBall {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1); 
+        }
     }
 
-    .timeline-item.right .timeline-bump{
-        animation: slideInLeft 0.5s ease;
+    .timeline-item.left .timeline-bump {
+        align-self: flex-end;
     }
 
     .timeline-connector {
@@ -86,69 +111,58 @@
         background: #007BFF; /* Match the timeline color */
         position: absolute;
         top: 10px;
+        height: 3px; 
     }
 
     .timeline-item.left .timeline-connector {
         left: 100%; /* Align to the right of the bump */
-        height: 3px; 
-        animation: slideInRight 0.5s ease;
+        transform-origin: right;
     }
 
     .timeline-item.right .timeline-connector {
         left: -30%; /* Align to the left of the bump */
-        height: 3px; 
-        animation: slideInLeft 0.5s ease;
+        transform-origin: left;
     }
-    
+
+    @keyframes expandConnector {
+        from {
+            transform: scaleX(0); /* Start with no width */
+        }
+        to {
+            transform: scaleX(1); /* Expand to full width */
+        }
+    }
+
     .timeline-content {
         background: #f9f9f9;
         border-radius: 10px;
         padding: 10px 20px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         position: relative;
+        opacity: 0;
     }
-    
+
+    @keyframes fadeInContent {
+        from {
+            transform: translateY(20px);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
     .timeline-content h2 {
         margin: 0;
         color: #007BFF;
     }
-    
+
     .timeline-content p {
         margin: 5px 0 0;
         color: #333;
     }
-
-    .timeline-item.left .timeline-content {
-        animation: slideInRight 0.5s ease;
-    }
-        
-    .timeline-item.right .timeline-content {
-        animation: slideInLeft 0.5s ease;
-    }
-    
-    @keyframes slideInLeft {
-        from {
-            transform: scale(0.5);
-            transform: translateX(-20%);
-            opacity: 0;
-        }
-        to {
-            transform: scale(1);
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes slideInRight {
-        from {
-            transform: scale(0.5);
-            transform: translateX(20%);
-            opacity: 0;
-        }
-        to {
-            transform: scale(1);
-            transform: translateX(0);
-            opacity: 1;
-        }
+    .timeline-connector,
+    .timeline-bump,
+    .timeline-content {
+        opacity: 0;
     }
 </style>
