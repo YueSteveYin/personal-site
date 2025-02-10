@@ -14,9 +14,13 @@ function loadPage(page) {
         .then(html => {
             main.innerHTML = html;
             main.classList.add('loaded', page);
+            if (page === 'timeline') {
+                document.querySelector('main').style.overflow = 'auto'; // Enable scrollbar for timeline
+            } else {
+                document.querySelector('main').style.overflow = 'hidden'; // Disable scrollbar for other pages
+            }
             window.history.pushState(null, '', `?page=${page}`);
             title.innerHTML = page.charAt(0).toUpperCase() + page.slice(1);
-
             // Load experiences after loading the experience page
             if (page === 'experience') {
                 loadExperiences();

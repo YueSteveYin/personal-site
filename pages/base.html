@@ -37,14 +37,15 @@
       }
       
       main {
-        flex: 1; /* Take remaining space */
+        flex: 1;
         display: flex;
         justify-content: center;
         align-items: center;
-        overflow: hidden;
         width: 100%;
         opacity: 0;
         transition: opacity 0.5s ease;
+        height: 80vh; /* Fixed height for consistency */
+        overflow: hidden; /* Default: no scrollbars */
       }
       main.loaded {
         opacity: 1;
