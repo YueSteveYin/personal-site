@@ -38,14 +38,12 @@
       
       main {
         flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: block; /* No centering, allows normal flow */
         width: 100%;
         opacity: 0;
         transition: opacity 0.5s ease;
-        height: 80vh; /* Fixed height for consistency */
-        overflow: hidden; /* Default: no scrollbars */
+        height: 80vh; /* Allow full content height */
+        overflow: auto; /* Ensure content is visible */
       }
       main.loaded {
         opacity: 1;

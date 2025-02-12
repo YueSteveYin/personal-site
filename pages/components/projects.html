@@ -1,3 +1,76 @@
-<section>
-    
+<section id="projects">
+    <div class="project-container">
+        <div class="project-card">
+            <h2>Project 1</h2>
+            <p>Brief description of Project 1.</p>
+        </div>
+        <div class="project-card">
+            <h2>Project 2</h2>
+            <p>Brief description of Project 2.</p>
+        </div>
+        <div class="project-card">
+            <h2>Project 3</h2>
+            <p>Brief description of Project 3.</p>
+        </div>
+        <div class="project-card">
+            <h2>Project 4</h2>
+            <p>Brief description of Project 4.</p>
+        </div>
+    </div>
 </section>
+
+<style>
+    #projects {
+        max-width: 80vw;
+        margin: 5vh auto;
+        padding: 2vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .project-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3vh;
+        overflow-y: auto;
+        max-height: 75vh; /* Limit height to enable scrolling */
+        padding: 2vh;
+        border-radius: 2vw;
+        background: rgba(255, 255, 255, 0.95);
+        width: 90vw; /* Makes it responsive to screen width */
+    }
+
+    .project-card {
+        background: #f9f9f9;
+        width: 70vw; /* Makes it responsive */
+        height: 20vh; /* Set a fixed height relative to viewport */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 2vw;
+        box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+        transform: translateY(-1vh);
+        box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.15);
+    }
+
+    .project-card h2 {
+        margin: 0;
+        font-size: 3vh;
+        color: #333;
+    }
+
+    .project-card p {
+        margin-top: 1vh;
+        font-size: 2vh;
+        color: #666;
+        text-align: center;
+        padding: 0 2vw;
+    }
+</style>

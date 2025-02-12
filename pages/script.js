@@ -14,11 +14,6 @@ function loadPage(page) {
         .then(html => {
             main.innerHTML = html;
             main.classList.add('loaded', page);
-            if (page === 'timeline') {
-                document.querySelector('main').style.overflow = 'auto'; // Enable scrollbar for timeline
-            } else {
-                document.querySelector('main').style.overflow = 'hidden'; // Disable scrollbar for other pages
-            }
             window.history.pushState(null, '', `?page=${page}`);
             title.innerHTML = page.charAt(0).toUpperCase() + page.slice(1);
             // Load experiences after loading the experience page
@@ -144,7 +139,7 @@ async function loadTimeline() {
     const items = document.querySelectorAll(".timeline-item");
     items.forEach((item, index) => {
         // Delay connectors, bumps, and content sequentially
-        const delay = 0.5 + index * 0.5; // Delay after timeline expansion
+        const delay = 0.5 + index * 0.3; // Delay after timeline expansion
 
         const connector = item.querySelector(".timeline-connector");
         const bump = item.querySelector(".timeline-bump");
@@ -156,7 +151,7 @@ async function loadTimeline() {
                 connector.style.opacity = 1;
             }, delay * 1000 - 1);
             setTimeout(() => {
-                connector.style.animation = `expandConnector 0.5s ease-out forwards`;
+                connector.style.animation = `expandConnector 0.4s ease-out forwards`;
             }, delay * 1000);
             console.log(delay)
         }
@@ -165,7 +160,7 @@ async function loadTimeline() {
                 bump.style.opacity = 1;
             }, delay * 1000 - 1);
             setTimeout(() => {
-                bump.style.animation = `expandBall 0.5s ease-out forwards`;
+                bump.style.animation = `expandBall 0.4s ease-out forwards`;
             }, delay * 1000);
         }
         if (content) {
@@ -173,7 +168,7 @@ async function loadTimeline() {
                 content.style.opacity = 1;
             }, delay * 1000 - 1);
             setTimeout(() => {
-                content.style.animation = `fadeInContent 0.5s ease-out forwards`;
+                content.style.animation = `fadeInContent 0.4s ease-out forwards`;
             }, delay * 1000);
         }
     });
