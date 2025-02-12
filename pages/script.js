@@ -62,30 +62,51 @@ async function loadExperiences() {
     // Fetch and add slides
     for (let i = 0; i < experiences.length; i++) {
         const response = await fetch(contentDir + experiences[i]);
+        
         if (response.ok) {
             const text = await response.text();
-            const [title, position, time, description, site] = text.split('\n');
-
+            const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+    
+            if (lines.length < 3) {
+                console.error(`Invalid format in file: ${experiences[i]}`);
+                continue;
+            }
+    
+            const [title, position, time] = lines.slice(0, 3);
+            let site = '';
+            let description = '';
+    
+            // Check if the 4th line is a site link
+            if (lines[3].startsWith('site:')) {
+                site = lines[3].replace('site: ', '');
+                description = lines.slice(4).join('<br>'); // Combine the rest into the description
+            } else {
+                description = lines.slice(3).join('<br>'); // No site, so start description from 4th line
+            }
+    
             // Create slide
             const slide = document.createElement('div');
             slide.classList.add('mySlide');
             slide.innerHTML = `
                 <h2>${title}</h2>
                 <p class="position-time">${position} | ${time}</p>
+                ${site ? `<a href="${site}" target="_blank">Visit Site</a>` : ''}
                 <div class="description">
                     <p>${description}</p>
                 </div>
-                ${site ? `<a href="${site}" target="_blank">Visit Site</a>` : ''}
             `;
             slidesTrack.appendChild(slide);
-
+    
             // Create corresponding dot
             const dot = document.createElement('span');
             dot.classList.add('dot');
             dot.setAttribute('onclick', `setSlide(${i})`);
             dotsContainer.appendChild(dot);
+        } else {
+            console.error(`Failed to load file: ${experiences[i]}`);
         }
     }
+    
 
     // Set initial slide position and activate first dot
     updateSlidePosition();
