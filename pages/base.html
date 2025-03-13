@@ -20,13 +20,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: center; /* Keep everything centered */
-        overflow: hidden; /* Prevent scrollbars */
+        overflow: auto; /* Prevent scrollbars */
       }
       
       header {
         width: 100%;
         position: fixed;
         top: 0;
+        z-index: 1000;
       }
       
       h1 {
@@ -43,11 +44,28 @@
         opacity: 0;
         transition: opacity 0.5s ease;
         height: 80vh; /* Allow full content height */
-        overflow: auto; /* Ensure content is visible */
       }
       main.loaded {
         opacity: 1;
       }
+
+      body.timeline {
+        background-image: url("../src/timeline-background.jpg");
+        background-size: cover;
+        background-repeat: repeat-y; /* Allow the background to extend infinitely */
+        background-position: center top;
+        background-attachment: fixed; /* Ensures the background scrolls with the content */
+        animation: scrollBackground 60s linear infinite;
+      }
+      @keyframes scrollBackground {
+        from {
+            background-position: center 0px;
+        }
+        to {
+            background-position: center 10000px; /* Adjust this value for speed */
+        }
+      }
+
     </style>
   </head>
   <body>

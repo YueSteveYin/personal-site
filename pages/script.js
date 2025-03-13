@@ -2,7 +2,7 @@ function loadPage(page) {
     const main = document.querySelector('main');
     const url = `components/${page}.html`;
     const title = document.getElementById('title');
-
+    const body = document.querySelector('body');
     main.className = '';
     main.classList.remove('loaded');
 
@@ -21,6 +21,8 @@ function loadPage(page) {
                 loadExperiences();
             } else if (page === 'timeline') {
                 loadTimeline();
+                title.style.color = 'white';
+                body.classList.add('timeline');
             }
         })
         .catch(() => {
@@ -157,6 +159,7 @@ function updateDots() {
 
 
 async function loadTimeline() {
+
     const items = document.querySelectorAll(".timeline-item");
     items.forEach((item, index) => {
         // Delay connectors, bumps, and content sequentially
