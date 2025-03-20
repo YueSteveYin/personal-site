@@ -19,10 +19,22 @@ function loadPage(page) {
             // Load experiences after loading the experience page
             if (page === 'experience') {
                 loadExperiences();
+                title.style.color = 'white';
+                body.classList.value = '';
+                body.classList.add('experience');
             } else if (page === 'timeline') {
                 loadTimeline();
                 title.style.color = 'white';
+                body.classList.value = '';
                 body.classList.add('timeline');
+            }else if (page === 'about') {
+                title.style.color = 'white';
+                body.classList.value = '';
+                body.classList.add('about');
+            } else if (page === 'projects') {
+                title.style.color = 'white';
+                body.classList.value = '';
+                body.classList.add('projects');
             }
         })
         .catch(() => {
@@ -194,6 +206,9 @@ async function loadTimeline() {
             setTimeout(() => {
                 content.style.animation = `fadeInContent 0.4s ease-out forwards`;
             }, delay * 1000);
+            setTimeout(() => {
+                content.style.animation = "none"; // Remove animation once completed
+            }, (delay * 1000) + 400);
         }
     });
 }

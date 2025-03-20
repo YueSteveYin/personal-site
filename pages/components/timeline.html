@@ -254,7 +254,7 @@
     .timeline-content {
         background: #f9f9f9;
         border-radius: 10px;
-        padding: 10px 20px;
+        padding: 20px 20px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         position: relative;
         opacity: 0;
@@ -283,4 +283,10 @@
     .timeline-content {
         opacity: 0;
     }
+    .timeline-item:hover .timeline-content{
+        transform: scale(1.2);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
 </style>
