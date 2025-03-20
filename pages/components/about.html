@@ -1,134 +1,188 @@
-<section id="page_container">
-<!-- Introduction Section -->
-    <section class="intro">
-        <div class="image-container">
-            <img src="../../src/self.jpg" alt="Your Profile Picture">
+<section id="about-container">
+    <div id="slides">
+        <div class="slide">
+            <h2>Welcome to My World</h2>
+            <p>I'm Steve Yin, a software engineer passionate about building things.</p>
         </div>
-        <div class="intro-text">
-            <h2>Hello! I'm Steve Yin</h2>
-            <p>
-                I’m a passionate software engineer with a love for building dynamic and efficient applications.
-                My journey in programming started in college, and since then, I've worked on a variety of projects,
-                ranging from web development to AI applications.
-            </p>
+
+        <div class="parallax"></div>
+
+        <div class="slide">
+            <h2>My Skills</h2>
+            <p>Proficient in JavaScript, Python, C++, and web technologies like React and Node.js.</p>
         </div>
-    </section>
-    <!-- Skills Section -->
-    <section class="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Programming Languages: JavaScript, Python, C++</li>
-            <li>Web Development: HTML, CSS, React, Node.js</li>
-            <li>Tools: Git, Docker, VS Code</li>
-            <li>Machine Learning: TensorFlow, Scikit-learn</li>
-        </ul>
-    </section>
-    <!-- Interests Section -->
-    <section class="interests">
-        <h2>Interests</h2>
-        <p>
-            Apart from coding, I enjoy exploring photography, reading classical Chinese poetry, and
-            hiking in nature. I also have a keen interest in astronomy and love gazing at the stars.
-        </p>
-    </section>
-    <!-- Contact Section -->
-    <section class="contact">
-        <h2>Contact</h2>
-        <p>Feel free to reach out to me:</p>
-        <ul>
-            <li>Email: <a href="mailto:yuy045@ucsd.edu">yuy045@ucsd.edu</a></li>
-            <li>LinkedIn: <a href="https://www.linkedin.com/in/yue-yin-b09320217/">linkedin.com/in/yue-yin</a></li>
-            <li>GitHub: <a href="https://github.com/">github.com</a></li>
-        </ul>
-    </section>
-    <style>
 
-        #page_container{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            border-radius: 1rem;
-            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.1);
-            background: white;
-            padding: 3vh;
-        }
+        <div class="parallax"></div>
 
-        .intro {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2vh;
-            margin-bottom: 2vh;
-        }
+        <div class="slide">
+            <h2>My Interests</h2>
+            <p>Besides coding, I enjoy photography, classical Chinese poetry, and astronomy.</p>
+        </div>
 
-        .image-container img {
-            border-radius: 20%;
-            max-width: 150px;
-            height: 100%;
-            width: auto;
-            object-fit: cover;
-            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.1);
-        }
+        <div class="parallax"></div>
 
-        .intro-text h2 {
-            font-size: 2rem;
-        }
+        <div class="slide">
+            <h2>Let's Connect</h2>
+            <p>Email: <a href="mailto:yuy045@ucsd.edu">yuy045@ucsd.edu</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/yue-yin-b09320217/">My LinkedIn</a></p>
+        </div>
 
-        .intro-text p {
-            font-size: 1rem;
-            text-align: center;
-            padding: 0 2vw;
-        }
+        <div class="parallax"></div>
+    </div>
 
-        .skills ul, .contact ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .skills ul li, .contact ul li {
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        .skills h2, .interests h2, .contact h2 {
-            font-size: 2rem;
-        }
-
-        a {
-            color: #007BFF;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .intro {
-                flex-direction: row;
-                align-items: center;
-            }
-
-            .intro-text p {
-                text-align: left;
-            }
-
-            .skills ul, .contact ul {
-                padding-left: 2vw;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            h1 {
-                font-size: 3rem;
-            }
-
-            .intro-text h2 {
-                font-size: 2.5rem;
-            }
-
-            .skills ul li, .contact ul li {
-                font-size: 1.2rem;
-            }
-        }
-    </style>
+    <div id="firework-container">
+        <div class="firework"></div>
+        <div id = "cover"></div>
+    </div>
 </section>
+
+
+
+<style>
+        /* Main container */
+    #about-container {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        overflow: hidden;
+        background-image: url("../../src/background.png");
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    /* Slide container */
+    #slides {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        scroll-behavior: smooth;
+    }
+
+    /* Individual slides */
+    .slide {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        text-align: center;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Parallax effect */
+    .parallax {
+        background-image: url("../src/about-background.jpg");
+        height: 100vh;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+        /* Firework container */
+        /* Firework container */
+    #firework-container {
+        position: fixed;
+        right: 5%;
+        bottom: 5%;
+        width: 10%;
+        height: 85%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    /* Firework effect */
+    .firework,
+    .firework::before,
+    .firework::after {
+        content: "";
+        position: absolute;
+        width: 0.5vmin;
+        aspect-ratio: 1;
+        background:
+        radial-gradient(circle, #ff0 0.3vmin, #0000 0) 50% 00%,
+        radial-gradient(circle, #f00 0.3vmin, #0000 0) 00% 50%,
+        radial-gradient(circle, #0f0 0.5vmin, #0000 0) 50% 99%,
+        radial-gradient(circle, #00f 0.2vmin, #0000 0) 99% 50%,
+        radial-gradient(circle, #ff8000 0.3vmin, #0000 0) 80% 90%,
+        radial-gradient(circle, #ff0080 0.5vmin, #0000 0) 95% 90%,
+        radial-gradient(circle, #ffff00 0.5vmin, #0000 0) 10% 60%,
+        radial-gradient(circle, #ff00ff 0.2vmin, #0000 0) 31% 80%,
+        radial-gradient(circle, #00ffff 0.3vmin, #0000 0) 80% 10%,
+        radial-gradient(circle, #ff4000 0.2vmin, #0000 0) 90% 23%,
+        radial-gradient(circle, #00ff80 0.3vmin, #0000 0) 45% 20%,
+        radial-gradient(circle, #8000ff 0.5vmin, #0000 0) 13% 24%,
+        radial-gradient(circle, #ff1493 0.3vmin, #0000 0) 25% 35%,
+        radial-gradient(circle, #1e90ff 0.5vmin, #0000 0) 70% 50%,
+        radial-gradient(circle, #ff4500 0.2vmin, #0000 0) 85% 65%,
+        radial-gradient(circle, #00fa9a 0.3vmin, #0000 0) 60% 30%,
+        radial-gradient(circle, #ffa500 0.5vmin, #0000 0) 40% 80%,
+        radial-gradient(circle, #ffd700 0.3vmin, #0000 0) 10% 10%,
+        radial-gradient(circle, #8a2be2 0.5vmin, #0000 0) 15% 75%,
+        radial-gradient(circle, #ff69b4 0.3vmin, #0000 0) 90% 40%,
+        radial-gradient(circle, #7fff00 0.5vmin, #0000 0) 55% 25%,
+        radial-gradient(circle, #dc143c 0.3vmin, #0000 0) 65% 85%,
+        radial-gradient(circle, #00ced1 0.5vmin, #0000 0) 35% 15%,
+        radial-gradient(circle, #ff6347 0.3vmin, #0000 0) 50% 75%,
+        radial-gradient(circle, #9400d3 0.5vmin, #0000 0) 75% 60%,
+        radial-gradient(circle, #adff2f 0.3vmin, #0000 0) 20% 90%,
+        radial-gradient(circle, #00bfff 0.5vmin, #0000 0) 30% 50%,
+        radial-gradient(circle, #32cd32 0.3vmin, #0000 0) 70% 20%,
+        radial-gradient(circle, #ff00ff 0.5vmin, #0000 0) 95% 35%;
+        background-size: 0.5vmin 0.5vmin;
+        background-repeat: no-repeat;
+    }
+
+    /* Rotating effects for explosion */
+    .firework::before {
+        transform: translate(-50%, -50%) rotate(25deg) !important; 
+    }
+
+    .firework::after {
+        transform: translate(-50%, -50%) rotate(-37deg) !important;
+    }
+
+    /* Explosion animation */
+    .exploded {
+        animation: firework-explosion 1s infinite;
+    }
+
+    @keyframes firework-explosion {
+        0% { transform: scale(1); opacity: 1; }
+        100% { transform: scale(2); opacity: 0; width: 50vmin; }
+    }
+
+    #cover {
+        position: absolute;
+        width: 1.2vmin;  /* Increased size for visibility */
+        height: 1.2vmin; /* Explicit height to ensure a perfect circle */
+        background: radial-gradient(circle, #ff0 0.8vmin, #0000 0);
+        background-size: 100% 100%; /* Ensures the gradient fully fits */
+        background-repeat: no-repeat;
+        border-radius: 50%; /* Ensures it's always a circle */
+        z-index: 1000;
+    }
+
+    #cover::after {
+        content: "";
+        position: absolute;
+        width: 0.5vmin; /* Thin tail */
+        height: 5vmin; /* Long glowing tail */
+        background: linear-gradient(to bottom, rgba(255, 255, 0, 0.8), rgba(255, 255, 0, 0)); /* Fading yellow tail */
+        bottom: -5vmin; /* Extends downward from the firework */
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        filter: blur(1px); /* Slight glow effect */
+    }
+
+</style>

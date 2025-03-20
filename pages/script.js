@@ -28,6 +28,7 @@ function loadPage(page) {
                 body.classList.value = '';
                 body.classList.add('timeline');
             }else if (page === 'about') {
+                loadAbout();
                 title.style.color = 'white';
                 body.classList.value = '';
                 body.classList.add('about');
@@ -41,6 +42,39 @@ function loadPage(page) {
             main.innerHTML = "<h2>404 - Page Not Found</h2>";
         });
 }
+
+
+function loadAbout() {
+    const firework = document.querySelector(".firework");
+    const cover = document.querySelector("#cover");
+
+    if (!firework) {
+        console.error("Firework element not found.");
+        return;
+    }
+
+    function updateFirework() {
+        let scrollY = window.scrollY;
+        let progress = scrollY / (document.body.scrollHeight - window.innerHeight);
+
+        // Moves firework up dynamically based on scroll progress
+        let fireworkMove = Math.min(progress * 90, 90); // Moves up to 90% of its container height
+        firework.style.bottom = `${fireworkMove}%`;
+        cover.style.bottom = `${fireworkMove}%`;
+        // Firework explodes at 95% scroll progress
+        if (progress >= 0.95) {
+            firework.classList.add("exploded");
+            cover.style.display = "none";   
+        } else {
+            firework.classList.remove("exploded");
+            cover.style.display = "block"; 
+        }
+    }
+
+    window.addEventListener("scroll", updateFirework);
+}
+
+
 
 // Load initial page on startup
 window.onload = () => {
@@ -59,6 +93,9 @@ function resetScrollbar() {
 let slideIndex = 0;
 const contentDir = './components/experience_contents/';
 const experiences = ['experience1.txt', 'experience2.txt', 'experience3.txt', 'experience4.txt', 'experience5.txt'];
+
+
+
 
 // Load experiences and add dots dynamically
 async function loadExperiences() {
