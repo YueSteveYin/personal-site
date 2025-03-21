@@ -33,6 +33,7 @@ function loadPage(page) {
                 body.classList.value = '';
                 body.classList.add('about');
             } else if (page === 'projects') {
+                loadProjects();
                 title.style.color = 'white';
                 body.classList.value = '';
                 body.classList.add('projects');
@@ -44,35 +45,63 @@ function loadPage(page) {
 }
 
 
+let fireworksSpawned = false;
+
 function loadAbout() {
     const firework = document.querySelector(".firework");
     const cover = document.querySelector("#cover");
+    const sky = document.getElementById("skyfireworks");
 
-    if (!firework) {
-        console.error("Firework element not found.");
+    if (!firework || !cover || !sky) {
+        console.error("Missing firework or cover element.");
         return;
     }
+
+    let fireworksSpawned = false;
 
     function updateFirework() {
         let scrollY = window.scrollY;
         let progress = scrollY / (document.body.scrollHeight - window.innerHeight);
 
-        // Moves firework up dynamically based on scroll progress
-        let fireworkMove = Math.min(progress * 90, 90); // Moves up to 90% of its container height
+        let fireworkMove = Math.min(progress * 90, 90);
         firework.style.bottom = `${fireworkMove}%`;
         cover.style.bottom = `${fireworkMove}%`;
-        // Firework explodes at 95% scroll progress
+
         if (progress >= 0.95) {
             firework.classList.add("exploded");
-            cover.style.display = "none";   
+            cover.style.display = "none";
+
+            if (!fireworksSpawned) {
+                spawnSkyFireworks(5); // spawn 5 fireworks
+                fireworksSpawned = true;
+            }
         } else {
             firework.classList.remove("exploded");
-            cover.style.display = "block"; 
+            cover.style.display = "block";
+            fireworksSpawned = false;
+            sky.innerHTML = ""; // clear old fireworks
+        }
+    }
+
+    function spawnSkyFireworks(count) {
+        for (let i = 0; i < count; i++) {
+            const fw = document.createElement("div");
+            fw.classList.add("sky-firework");
+
+            // Random position
+            fw.style.left = `${Math.random() * 80 + 10}%`;
+            fw.style.top = `${Math.random() * 20 + 5}%`;
+
+            // Staggered animation delay
+            fw.style.animationDelay = `${i * 0.3}s`;
+
+            document.getElementById("skyfireworks").appendChild(fw);
         }
     }
 
     window.addEventListener("scroll", updateFirework);
 }
+
 
 
 
@@ -203,6 +232,37 @@ function updateDots() {
     dots.forEach(dot => dot.classList.remove('active'));
     dots[slideIndex].classList.add('active');
 }
+
+
+
+
+function loadProjects() {
+  // Find all parallax carousels on the page
+  const carousels = document.querySelectorAll('.parallax-carousel');
+
+  carousels.forEach(carousel => {
+    const left = carousel.querySelector('.left');
+    const right = carousel.querySelector('.right');
+
+    left.addEventListener('click', () => moveCarousel(carousel, -1));
+    right.addEventListener('click', () => moveCarousel(carousel, 1));
+  });
+}
+
+function moveCarousel(carousel, direction) {
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const activeSlide = carousel.querySelector('.carousel-slide.active');
+    let currentIndex = Array.from(slides).indexOf(activeSlide);
+    let newIndex = currentIndex + direction;
+  
+    if (newIndex < 0) newIndex = slides.length - 1;
+    if (newIndex >= slides.length) newIndex = 0;
+  
+    slides[currentIndex].classList.remove('active');
+    slides[newIndex].classList.add('active');
+  }
+  
+
 
 
 

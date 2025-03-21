@@ -1,39 +1,41 @@
 <section id="about-container">
     <div id="slides">
         <div class="slide">
-            <h2>Welcome to My World</h2>
-            <p>I'm Steve Yin, a software engineer passionate about building things.</p>
+            <div class="image-container">
+                <img src="../../src/profilepic.jpg" alt="Your Profile Picture">
+            </div>
+            <div class="intro-text">
+                <h2>Hello! I'm Steve Yin</h2>
+                <p>
+                    I’m a passionate software engineer with a love for building dynamic and efficient applications.
+                    My journey in programming started in college, and since then, I've worked on a variety of projects,
+                    ranging from web development to AI applications.
+                </p>
+            </div>
         </div>
-
-        <div class="parallax"></div>
 
         <div class="slide">
             <h2>My Skills</h2>
             <p>Proficient in JavaScript, Python, C++, and web technologies like React and Node.js.</p>
         </div>
 
-        <div class="parallax"></div>
-
         <div class="slide">
             <h2>My Interests</h2>
             <p>Besides coding, I enjoy photography, classical Chinese poetry, and astronomy.</p>
         </div>
-
-        <div class="parallax"></div>
 
         <div class="slide">
             <h2>Let's Connect</h2>
             <p>Email: <a href="mailto:yuy045@ucsd.edu">yuy045@ucsd.edu</a></p>
             <p>LinkedIn: <a href="https://www.linkedin.com/in/yue-yin-b09320217/">My LinkedIn</a></p>
         </div>
-
-        <div class="parallax"></div>
     </div>
 
     <div id="firework-container">
         <div class="firework"></div>
         <div id = "cover"></div>
     </div>
+    <div id="skyfireworks"></div>
 </section>
 
 
@@ -48,9 +50,10 @@
         justify-content: space-between;
         align-items: center;
         overflow: hidden;
-        background-image: url("../../src/background.png");
+        background-image: url("../../src/about-background.png");
         background-size: cover;
         background-attachment: fixed;
+        z-index: -999;
     }
 
     /* Slide container */
@@ -61,6 +64,9 @@
         align-items: center;
         align-content: center;
         scroll-behavior: smooth;
+        padding-top: 20vh;  /* Push first slide down to center */
+        padding-bottom: 40vh; /* Ensure last slide is centered */
+        gap: 30vh; /* Space between slides */
     }
 
     /* Individual slides */
@@ -77,18 +83,15 @@
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     }
 
-    /* Parallax effect */
-    .parallax {
-        background-image: url("../src/about-background.jpg");
-        height: 100vh;
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+    .image-container img {
+        border-radius: 20%;
+        max-width: 150px;
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+        box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.1);
     }
 
-        /* Firework container */
-        /* Firework container */
     #firework-container {
         position: fixed;
         right: 5%;
@@ -153,7 +156,7 @@
 
     /* Explosion animation */
     .exploded {
-        animation: firework-explosion 1s infinite;
+        animation: firework-explosion 3s infinite;
     }
 
     @keyframes firework-explosion {
@@ -185,4 +188,51 @@
         filter: blur(1px); /* Slight glow effect */
     }
 
+    #skyfireworks {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+    }
+    .sky-firework {
+        position: absolute;
+        width: 1vmin;
+        aspect-ratio: 1;
+        background:
+        radial-gradient(circle, #ff0 0.3vmin, #0000 0) 50% 00%,
+        radial-gradient(circle, #f00 0.3vmin, #0000 0) 00% 50%,
+        radial-gradient(circle, #0f0 0.5vmin, #0000 0) 50% 99%,
+        radial-gradient(circle, #00f 0.2vmin, #0000 0) 99% 50%,
+        radial-gradient(circle, #ff8000 0.3vmin, #0000 0) 80% 90%,
+        radial-gradient(circle, #ff0080 0.5vmin, #0000 0) 95% 90%,
+        radial-gradient(circle, #ffff00 0.5vmin, #0000 0) 10% 60%,
+        radial-gradient(circle, #ff00ff 0.2vmin, #0000 0) 31% 80%,
+        radial-gradient(circle, #00ffff 0.3vmin, #0000 0) 80% 10%,
+        radial-gradient(circle, #ff4000 0.2vmin, #0000 0) 90% 23%,
+        radial-gradient(circle, #00ff80 0.3vmin, #0000 0) 45% 20%,
+        radial-gradient(circle, #8000ff 0.5vmin, #0000 0) 13% 24%,
+        radial-gradient(circle, #ff1493 0.3vmin, #0000 0) 25% 35%,
+        radial-gradient(circle, #1e90ff 0.5vmin, #0000 0) 70% 50%,
+        radial-gradient(circle, #ff4500 0.2vmin, #0000 0) 85% 65%,
+        radial-gradient(circle, #00fa9a 0.3vmin, #0000 0) 60% 30%,
+        radial-gradient(circle, #ffa500 0.5vmin, #0000 0) 40% 80%,
+        radial-gradient(circle, #ffd700 0.3vmin, #0000 0) 10% 10%,
+        radial-gradient(circle, #8a2be2 0.5vmin, #0000 0) 15% 75%,
+        radial-gradient(circle, #ff69b4 0.3vmin, #0000 0) 90% 40%,
+        radial-gradient(circle, #7fff00 0.5vmin, #0000 0) 55% 25%,
+        radial-gradient(circle, #dc143c 0.3vmin, #0000 0) 65% 85%,
+        radial-gradient(circle, #00ced1 0.5vmin, #0000 0) 35% 15%,
+        radial-gradient(circle, #ff6347 0.3vmin, #0000 0) 50% 75%,
+        radial-gradient(circle, #9400d3 0.5vmin, #0000 0) 75% 60%,
+        radial-gradient(circle, #adff2f 0.3vmin, #0000 0) 20% 90%,
+        radial-gradient(circle, #00bfff 0.5vmin, #0000 0) 30% 50%,
+        radial-gradient(circle, #32cd32 0.3vmin, #0000 0) 70% 20%,
+        radial-gradient(circle, #ff00ff 0.5vmin, #0000 0) 95% 35%;
+        background-size: 0.5vmin 0.5vmin;
+        background-repeat: no-repeat;
+        animation: firework-explosion 3s infinite;
+    }
 </style>
