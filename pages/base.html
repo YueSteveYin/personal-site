@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="general.css" />
     <link rel="stylesheet" href="base.css" />
+
+    <link rel="preload" href="/personal-site/src/about-background.png" as="image" />
+    <link rel="preload" href="/personal-site/src/experience-background.png" as="image" />
+    <link rel="preload" href="/personal-site/src/timeline-background.jpg" as="image" />
+    <link
+      rel="preload"
+      href="/personal-site/src/VCR_OSD_MONO_1.001.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+
     <style>
       nav a {
         margin: 0 15px;
@@ -78,6 +90,10 @@
     </style>
   </head>
   <body>
+    <div id="loading-overlay">
+      <div class="loading-spinner"></div>
+      <p>Loading...</p>
+    </div>
     <header>
       <nav>
         <a href="../index.html">Home</a>
@@ -93,5 +109,6 @@
     </main>
 
     <script src="script.js"></script>
+    <script src="loading.js"></script>
   </body>
 </html>

@@ -239,11 +239,14 @@ function loadProjects() {
   scrollTo(0, 0);
   // Find all parallax carousels on the page
   const carousels = document.querySelectorAll('.parallax-carousel');
-
   carousels.forEach((carousel) => {
     const left = carousel.querySelector('.left');
     const right = carousel.querySelector('.right');
-
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    if (slides.length <= 1) {
+      left.style.display = 'none';
+      right.style.display = 'none';
+    }
     left.addEventListener('click', () => moveCarousel(carousel, -1));
     right.addEventListener('click', () => moveCarousel(carousel, 1));
   });
@@ -284,7 +287,6 @@ async function loadTimeline() {
       setTimeout(() => {
         connector.style.animation = `expandConnector 0.4s ease-out forwards`;
       }, delay * 1000);
-      console.log(delay);
     }
     if (bump) {
       setTimeout(

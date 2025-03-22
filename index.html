@@ -7,6 +7,16 @@
     <meta name="author" content="Steve Yin" />
     <link rel="stylesheet" href="pages/general.css" />
     <link type="module" href="pages/script.js" />
+
+    <link rel="preload" href="/personal-site/src/background.png" as="image" />
+    <link
+      rel="preload"
+      href="/personal-site/src/VCR_OSD_MONO_1.001.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+
     <style>
       :root {
         --black: #000000;
@@ -153,6 +163,10 @@
     </style>
   </head>
   <body>
+    <div id="loading-overlay">
+      <div class="loading-spinner"></div>
+      <p>Loading...</p>
+    </div>
     <div style="display: inline-block">
       <h1 class="typing">Welcome to Steve Yin's Site</h1>
     </div>
@@ -194,5 +208,6 @@
         </div>
       </a>
     </main>
+    <script src="pages/loading.js"></script>
   </body>
 </html>
