@@ -46,32 +46,6 @@ main {
     justify-content: center;
     height: calc(100vh - 25px);
     align-items: center;
-}
-
-/* Default background */
-main.about {
-    background-image: url("src/about.webp");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-main.experience {
-    background-image: url("../src/experience.webp");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-main.projects {
-    background-image: url("src/projects.webp");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-main.timeline {
-    background-image: url("src/timeline.webp");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

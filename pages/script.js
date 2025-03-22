@@ -268,7 +268,7 @@ function moveCarousel(carousel, direction) {
 
 
 async function loadTimeline() {
-
+    scrollTo(0, 0); // Reset scroll position
     const items = document.querySelectorAll(".timeline-item");
     items.forEach((item, index) => {
         // Delay connectors, bumps, and content sequentially
