@@ -1,60 +1,60 @@
 * {
-    font-family: "h1font", sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  font-family: 'h1font', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .body1 {
-    background-image: url("../src/homebackground.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    justify-content: center;
-    align-items: center;
-    z-index: -1;
+  background-image: url('../src/homebackground.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
 }
 
 .body2 {
-    background-color: grey;
+  background-color: grey;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 h1 {
-    font-size: 3vw;
-    margin-bottom: 10px;
-    margin-top: 20px;
+  font-size: 3vw;
+  margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 @media (min-width: 1440px) {
-    h1 {
-        font-size: 43px;
-    }
-    nav > a {
-        font-size: 21.5px;
-    }
-    footer {
-        font-size: 21px;
-    }
+  h1 {
+    font-size: 43px;
+  }
+  nav > a {
+    font-size: 21.5px;
+  }
+  footer {
+    font-size: 21px;
+  }
 }
 
 @media (max-width: 900px) {
-    nav > a {
-        font-size: 14px;
-        width: 108px;
-    }
-    h1 {
-        font-size: 27px;
-    }
-    footer {
-        font-size: 20px;
-    }
+  nav > a {
+    font-size: 14px;
+    width: 108px;
+  }
+  h1 {
+    font-size: 27px;
+  }
+  footer {
+    font-size: 20px;
+  }
 }
 
 @font-face {
-    font-family: h1font;
-    src: url("../src/VCR_OSD_MONO_1.001.ttf") format('truetype');
+  font-family: h1font;
+  src: url('../src/VCR_OSD_MONO_1.001.ttf') format('truetype');
 }

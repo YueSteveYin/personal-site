@@ -1,52 +1,52 @@
 nav {
-    display: flex;
-    justify-content: space-around;
-    background-color: slategray;
-    width: 100%;
-    position: relative;
-    height: 25px;
+  display: flex;
+  justify-content: space-around;
+  background-color: slategray;
+  width: 100%;
+  position: relative;
+  height: 25px;
 }
 
 nav > a {
-    position: relative;  /* Required for pseudo-element positioning */
-    width: 12vw;
-    display: inline-block;
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-    overflow: hidden;
-    line-height: normal; 
+  position: relative; /* Required for pseudo-element positioning */
+  width: 12vw;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  overflow: hidden;
+  line-height: normal;
 }
 
 nav > a::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 4px;
-    background-color: rgb(0, 0, 0);
-    transition: all 0.3s ease;
-    transform: translateX(-50%);  /* Start underline from the center */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 4px;
+  background-color: rgb(0, 0, 0);
+  transition: all 0.3s ease;
+  transform: translateX(-50%); /* Start underline from the center */
 }
 
 nav > a:hover::before {
-    width: 100%;  /* Expand underline fully */
+  width: 100%; /* Expand underline fully */
 }
 
 nav > a:hover {
-    color: black;  /* Change text color on hover */
+  color: black; /* Change text color on hover */
 }
 
 main {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    display: flex;
-    justify-content: center;
-    height: calc(100vh - 25px);
-    align-items: center;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 25px);
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
