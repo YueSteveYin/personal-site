@@ -34,7 +34,7 @@ function loadPage(page) {
         body.classList.add('about');
       } else if (page === 'projects') {
         loadProjects();
-        title.style.color = 'white';
+        title.style.color = 'black';
         body.classList.value = '';
         body.classList.add('projects');
       }

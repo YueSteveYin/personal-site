@@ -1,8 +1,27 @@
+@font-face {
+  font-family: h1font;
+  src: url('../src/VCR_OSD_MONO_1.001.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+/* Apply Open Sans globally */
 * {
-  font-family: 'h1font', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Override for header tags */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font-family: 'h1font', sans-serif;
 }
 
 .body1 {
@@ -52,11 +71,6 @@ h1 {
   footer {
     font-size: 20px;
   }
-}
-
-@font-face {
-  font-family: h1font;
-  src: url('../src/VCR_OSD_MONO_1.001.ttf') format('truetype');
 }
 
 /* Loading Overlay */
