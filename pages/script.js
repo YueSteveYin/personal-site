@@ -303,14 +303,14 @@ async function loadTimeline() {
             connector.style.opacity = '1';
             connector.style.animation = 'expandConnector 0.4s ease-out forwards';
           }
-          
+
           setTimeout(() => {
             if (bump && bump.style.opacity !== '1') {
               bump.style.opacity = '1';
               bump.style.animation = 'expandBall 0.4s ease-out forwards';
             }
           }, 200); // after connector
-          
+
           setTimeout(() => {
             if (content && content.style.opacity !== '1') {
               const isLeft = item.classList.contains('left');
@@ -325,7 +325,7 @@ async function loadTimeline() {
         }
       });
     },
-    { threshold: 0.5}
+    { threshold: 0.5 },
   );
 
   document.querySelectorAll('.timeline-item').forEach((item) => {
