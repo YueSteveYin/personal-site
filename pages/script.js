@@ -267,54 +267,68 @@ function moveCarousel(carousel, direction) {
 
 async function loadTimeline() {
   scrollTo(0, 0); // Reset scroll position
-  const items = document.querySelectorAll('.timeline-item');
-  items.forEach((item, index) => {
-    // Delay connectors, bumps, and content sequentially
-    const delay = 0.5 + index * 0.3; // Delay after timeline expansion
 
-    const connector = item.querySelector('.timeline-connector');
-    const bump = item.querySelector('.timeline-bump');
-    const content = item.querySelector('.timeline-content');
+  // Animate timeline-line height as user scrolls
+  function animateTimelineLine() {
+    const line = document.querySelector('.timeline-line');
+    const timeline = document.getElementById('timeline');
+    if (!line || !timeline) return;
 
-    // Apply animation with delay
-    if (connector) {
-      setTimeout(
-        () => {
-          connector.style.opacity = 1;
-        },
-        delay * 1000 - 1,
-      );
-      setTimeout(() => {
-        connector.style.animation = `expandConnector 0.4s ease-out forwards`;
-      }, delay * 1000);
-    }
-    if (bump) {
-      setTimeout(
-        () => {
-          bump.style.opacity = 1;
-        },
-        delay * 1000 - 1,
-      );
-      setTimeout(() => {
-        bump.style.animation = `expandBall 0.4s ease-out forwards`;
-      }, delay * 1000);
-    }
-    if (content) {
-      setTimeout(
-        () => {
-          content.style.opacity = 1;
-        },
-        delay * 1000 - 1,
-      );
-      setTimeout(() => {
-        content.style.animation = `fadeInContent 0.4s ease-out forwards`;
-      }, delay * 1000);
-      setTimeout(
-        () => {
-          content.style.animation = 'none'; // Remove animation once completed
-        },
-        delay * 1000 + 400,
-      );
-    }
+    const scrollY = window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const elementTop = timeline.offsetTop;
+    const maxHeight = timeline.scrollHeight;
+
+    const visibleHeight = scrollY + viewportHeight - elementTop;
+    const newHeight = Math.min(visibleHeight, maxHeight);
+
+    line.style.height = `${newHeight}px`;
+  }
+
+  // Trigger timeline-line height growth on scroll
+  window.addEventListener('scroll', animateTimelineLine);
+  animateTimelineLine(); // initial call
+
+  // Observer for timeline-item animations
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const item = entry.target;
+          const connector = item.querySelector('.timeline-connector');
+          const bump = item.querySelector('.timeline-bump');
+          const content = item.querySelector('.timeline-content');
+
+          if (connector && connector.style.opacity !== '1') {
+            connector.style.opacity = '1';
+            connector.style.animation = 'expandConnector 0.4s ease-out forwards';
+          }
+          
+          setTimeout(() => {
+            if (bump && bump.style.opacity !== '1') {
+              bump.style.opacity = '1';
+              bump.style.animation = 'expandBall 0.4s ease-out forwards';
+            }
+          }, 200); // after connector
+          
+          setTimeout(() => {
+            if (content && content.style.opacity !== '1') {
+              const isLeft = item.classList.contains('left');
+              content.style.setProperty('--origin', isLeft ? 'right top' : 'left top');
+              content.style.opacity = '1';
+              content.style.transform = 'scale(1)';
+              content.style.animation = 'unfoldFromBump 0.5s ease-out forwards';
+            }
+          }, 400);
+
+          observer.unobserve(item); // Animate once
+        }
+      });
+    },
+    { threshold: 0.5}
+  );
+
+  document.querySelectorAll('.timeline-item').forEach((item) => {
+    observer.observe(item);
   });
 }

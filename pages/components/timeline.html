@@ -189,6 +189,7 @@
     transform: translateX(-50%);
     animation: expandTimeline 0.5s ease-out;
     transform-origin: top;
+    height: 0;
   }
 
   #timeline {
@@ -285,15 +286,18 @@
     padding: 20px 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     position: relative;
-    opacity: 0;
+    opacity: 1;
   }
 
-  @keyframes fadeInContent {
-    from {
-      transform: translateY(20px);
+  @keyframes unfoldFromBump {
+    0% {
+      transform: scale(0);
+      transform-origin: var(--origin, left top); /* Set by JS */
+      opacity: 0;
     }
-    to {
-      transform: translateY(0);
+    100% {
+      transform: scale(1);
+      opacity: 1;
     }
   }
 

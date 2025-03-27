@@ -3,8 +3,6 @@
   src: url('../src/VCR_OSD_MONO_1.001.ttf') format('truetype');
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
 /* Apply Open Sans globally */
 * {
   font-family: 'Open Sans', sans-serif;
