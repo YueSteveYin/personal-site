@@ -6,6 +6,27 @@ function loadPage(page) {
   main.className = '';
   main.classList.remove('loaded');
 
+  const botbutton = document.querySelector('#ai-assistant');
+  const chat = document.querySelector('#chat-box');
+  const sendButton = document.querySelector('#chat-send');
+  const chatMessages = document.querySelector('#chat-messages');
+  botbutton.addEventListener('click', () => {
+    chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+  })
+  sendButton.addEventListener('click', () => {
+    const input = document.querySelector('#chat-input');
+    const message = input.value;
+    if (message) {
+      const messageBox = document.createElement('div');
+      messageBox.classList.add('message');
+      messageBox.classList.add('user');
+      messageBox.innerHTML = `<p>${message}</p>`;
+      chatMessages.appendChild(messageBox);
+      input.value = '';
+    }
+  })
+  
+
   fetch(url)
     .then((response) => {
       if (!response.ok) throw new Error('Page not found');
