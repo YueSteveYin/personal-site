@@ -12,7 +12,7 @@ function loadPage(page) {
   const chatMessages = document.querySelector('#chat-messages');
   botbutton.addEventListener('click', () => {
     chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
-  })
+  });
   sendButton.addEventListener('click', () => {
     const input = document.querySelector('#chat-input');
     const message = input.value;
@@ -23,9 +23,10 @@ function loadPage(page) {
       messageBox.innerHTML = `<p>${message}</p>`;
       chatMessages.appendChild(messageBox);
       input.value = '';
+      response = responseChat(message);
+
     }
-  })
-  
+  });
 
   fetch(url)
     .then((response) => {
@@ -63,6 +64,25 @@ function loadPage(page) {
     .catch(() => {
       main.innerHTML = '<h2>404 - Page Not Found</h2>';
     });
+}
+
+function responseChat(message) {
+  fetch('https://personal-site-backend-mixt.onrender.com/api/status', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message })
+  })
+  .then(res => res.json())
+  .then(data => {
+    const chatMessages = document.querySelector('#chat-messages');
+    const messageBox = document.createElement('div');
+    messageBox.classList.add('message', 'assistant');
+    messageBox.innerHTML = `<p>${data.reply}</p>`;
+    chatMessages.appendChild(messageBox);
+  })
+  .catch(err => {
+    console.error("Fetch error:", err);
+  });
 }
 
 let fireworksSpawned = false;
