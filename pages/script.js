@@ -26,6 +26,7 @@ function loadPage(page) {
       messageBox.innerHTML = `<p>${message}</p>`;
       chatMessages.appendChild(messageBox);
       input.value = '';
+      chatMessages.scrollTop = chatMessages.scrollHeight;
       response = responseChat(message);
     }
   });
@@ -69,6 +70,12 @@ function loadPage(page) {
 }
 
 function responseChat(message) {
+  const chatMessages = document.querySelector('#chat-messages');
+  const loadingMessage = document.createElement('div');
+  loadingMessage.classList.add('loading');
+  loadingMessage.innerHTML = `<p>Please wait...</p>`;
+  chatMessages.appendChild(loadingMessage);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
   fetch('https://personal-site-backend-mixt.onrender.com/api/status', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -76,11 +83,12 @@ function responseChat(message) {
   })
     .then((res) => res.json())
     .then((data) => {
-      const chatMessages = document.querySelector('#chat-messages');
+      chatMessages.removeChild(loadingMessage);
       const messageBox = document.createElement('div');
       messageBox.classList.add('message', 'assistant');
       messageBox.innerHTML = `<p>${data.reply}</p>`;
       chatMessages.appendChild(messageBox);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
     })
     .catch((err) => {
       console.error('Fetch error:', err);
