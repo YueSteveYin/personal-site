@@ -99,12 +99,12 @@ let fireworksSpawned = false;
 
 function showTab(tabId) {
   // Show tab content
-  document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach((tab) => tab.classList.remove('active'));
   document.getElementById(tabId).classList.add('active');
 
   // Reveal clicked tab button
   const allButtons = document.querySelectorAll('.tab-buttons button');
-  allButtons.forEach(btn => {
+  allButtons.forEach((btn) => {
     const id = btn.getAttribute('onclick')?.match(/'(.+)'/)[1];
     if (id === tabId) btn.classList.add('revealed');
   });
@@ -135,7 +135,6 @@ function resetScrollbar() {
 }
 let slideIndex = 0;
 async function loadExperiences() {
-  
   const slidesTrack = document.getElementById('slidesTrack');
   const dotsContainer = document.getElementById('dotsContainer');
 
@@ -181,8 +180,6 @@ async function loadExperiences() {
   updateSlidePosition();
   updateDots();
 }
-
-
 
 // Move slides left or right
 function moveSlide(n) {
