@@ -1,4 +1,0 @@
-Research Corporation for Science Advancement (RCSA)3
-Lead Software Engineer
-Jun 2024 – Sep 2024
-Developed a website using Hugo.js, HTML, CSS and JavaScript to showcase contributions of marginalized scientists.Implemented a Markdown-based page-building system to generate profiles, enhancing scalability and content management. Built search functionality with optimized filtering, enabling users to search by research areas and coursework using  Pagefind

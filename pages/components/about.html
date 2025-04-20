@@ -1,33 +1,73 @@
 <section id="about-container">
-  <div id="slides">
-    <div class="slide">
-      <div class="image-container">
-        <img src="/personal-site/src/profilepic.jpg" alt="Your Profile Picture" />
+  <div class="tab-buttons">
+    <button onclick="showTab('intro')">👋 Intro</button>
+    <button onclick="showTab('skills')">💻 Skills</button>
+    <button onclick="showTab('fun')">🎮 Hobbies</button>
+    <button onclick="showTab('story')">📜 Story</button>
+    <button onclick="showTab('thanks')">💖 Thanks</button>
+    <button onclick="showTab('contact')">📬 Contact</button>
+  </div>
+
+  <div id="tab-panels">
+    <div class="tab-content active" id="intro">
+      <h2>Hello! I'm Steve Yin</h2>
+      <p>Hello, distinguished viewer in front of the screen! I’m Steve Yin, a full-stack developer with a front-end specialty. I’m all about writing clean code and bringing ideas to life with passion. 
+        Now, I know you don’t really know me yet—that’s okay. Even after reading this, you still won’t fully know me. 😉Even if you’re standing atop an iceberg, you might not see its full extent. 
+        But isn’t that part of the charm? I believe that with my skills, if you truly get to know me, you’ll uncover plenty of surprises! For now, I invite you to take a small glimpse of what I have to offer.. 
+        There's more to me than code—but you'll have to click around to see it. 😉</p>
+    </div>
+
+    <div class="tab-content" id="skills">
+      <h2>Tech Stack</h2>
+      <p>Well, well, alright. Let’s cut to the chase. I graduated from UCSD with a degree in Computer Engineering, and now I’m working on my master’s in Computer Science. If you’ve seen my résumé, 
+        you probably already know that. I’m not sure what you’re really curious about, but if you want a quick intro to my academic background——</p>
+      <div class="card-grid">
+        <div class="info-card">🧠 JavaScript, Python, C++</div>
+        <div class="info-card">⚙️ React, Node.js, Django</div>
+        <div class="info-card">🎨 HTML/CSS, Web Design</div>
+        <div class="info-card">📈 Machine Learning, Algorithms</div>
       </div>
-      <div class="intro-text">
-        <h2>Hello! I'm Steve Yin</h2>
-        <p>
-          I’m a passionate software engineer with a love for building dynamic and efficient
-          applications. My journey in programming started in college, and since then, I've worked on
-          a variety of projects, ranging from web development to AI applications.
-        </p>
-      </div>
     </div>
 
-    <div class="slide">
-      <h2>My Skills</h2>
-      <p>Proficient in JavaScript, Python, C++, and web technologies like React and Node.js.</p>
+    <div class="tab-content" id="fun">
+      <h2>What I Do for Fun</h2>
+      <p>Let’s talk about me first—I’m not just some "glasses-wearing tech guy" who sits in front of a computer all day. If you ever see me play badminton, you’ll be in for a surprise! 
+        I’m also into rock climbing, weightlifting, music, movies, and mixology. Oh, and I’m also a hardcore gamer</p>
+      <button onclick="toggleGames()">🎮 Show Full Game List</button>
+      <p id="game-list" class="collapsed">
+        Elden Ring, Shogun Showdown, APEX Legends, Kenshi, Buckshot Roulette, Stacklands, Project Zomboid, Rockstar, FPS Chess, Don’t Starve Together, Subnautica, Project Zero, Paint the Town Red, Valorant, Dead cells, 
+        Dome Keeper, HITMAN World of Assassination, Inscription, Sid Meier’s Civilization VI, Rim World Win, tMod Loader, Potion Craft, Slay the Spire, Hero’s Land, Sifu, Redacted, Marvel Rivals, League of Legends, 
+        Battlefield I, Rayday II, Overwatch, Grand Theft Auto: Vice City, Terraria, Turmoil, Kill Knight, Batman Arkham Asylum GOTY, BattleBit Remastered, Darkest Dungeon, Roblox Player, A Plague Tale Innocence, 
+        Watch Dogs II, The Forest, Kingdom Come Deliverance, Hell Let Loose, Red Dead Redemption II, Plants vs. Zombies, Plants vs. Zombies Hybrid Mod, Unturned, Counter-Strike Global Offensive, Portal, Portal II, 
+        Eldest Souls, Cat Quest, Castle Crashers, A Way Out, Handy Dandy, It Takes Two, Unspottable, The Escapists, Honor of Kings, and so on
+      </p>
     </div>
 
-    <div class="slide">
-      <h2>My Interests</h2>
-      <p>Besides coding, I enjoy photography, classical Chinese poetry, and astronomy.</p>
+    <div class="tab-content" id="story">
+      <h2>Origin Story</h2>
+      <p>My journey into tech didn’t start with textbooks—it started with chaos and curiosity. Back in elementary school, while other kids were memorizing multiplication tables, I was deep into Redstone circuits and Scratch games. 
+        I built mini-games, designed maps, and wrote basic logic and functions. It blew my mind that I could actually build my own world—code could do things that even adults couldn’t figure out. That was the hook.</p>
+      <p>The catch? I never finished a single map. Not once. Every time I got halfway through, my mom would find out, delete everything, and deliver the classic combo: scolding plus a bit of “parental feedback.” 
+        But instead of quitting, that just fueled my obsession. Apparently, nothing sparks an interest in computer engineering quite like losing your work and your Wi-Fi privileges in the same afternoon.</p>
+      <p>I didn’t choose software engineering because I thought I was some genius—I chose it because I’m genuinely in love with it. I can spend nights (and entire weekends) debugging one stubborn function, and somehow, it still feels worth it. 
+        That tiny thrill when something finally works? Better than coffee. Almost better than sleep. Almost.</p>
+      <p>I believe in building with purpose, learning with focus, and growing with consistency. 
+        Right now, I’m seeking opportunities in software development—looking to contribute what I’ve got, keep leveling up, and turn inspiration into systems that matter.</p>
     </div>
 
-    <div class="slide">
-      <h2>Let's Connect</h2>
+    <div class="tab-content" id="thanks">
+      <h2>Special Thanks 💖</h2>
+      <p>Huge thanks to my girlfriend for helping me figure out what to write for this website! 
+        But when she tried, she said she didn’t really know me well enough to help (so sad to hear that lol), so she ended up doing a little interview with me and asking all sorts of questions. 
+        After thinking about it, I figured some of these questions might actually interest you too, so I’ll just leave them here for your reference!</p>
+    </div>
+
+    <div class="tab-content" id="contact">
+      <h2>Let’s Connect! </h2>
       <p>Email: <a href="mailto:yuy045@ucsd.edu">yuy045@ucsd.edu</a></p>
+      <p>Phone: <a href="tel:+19513913426">(951)391-3426</a></p>
       <p>LinkedIn: <a href="https://www.linkedin.com/in/yue-yin-b09320217/">My LinkedIn</a></p>
+      <p>My Resume: <a href="/personal-site/src/Steve_resume.docx.pdf" target="_blank">View My Resume</a></p>
     </div>
   </div>
 
@@ -39,209 +79,100 @@
 </section>
 
 <style>
-  /* Main container */
   #about-container {
-    position: relative;
-    width: 100%;
+    padding: 10vh 5vw;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    overflow: hidden;
     background-image: url('/personal-site/src/about-background.png');
     background-size: cover;
     background-attachment: fixed;
-    z-index: -999;
   }
 
-  /* Slide container */
-  #slides {
-    width: 80%;
+  .tab-buttons {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    scroll-behavior: smooth;
-    padding-top: 20vh; /* Push first slide down to center */
-    padding-bottom: 40vh; /* Ensure last slide is centered */
-    gap: 30vh; /* Space between slides */
-  }
-
-  /* Individual slides */
-  .slide {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    text-align: center;
-    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .tab-buttons button {
+    padding: 0.6rem 1.2rem;
+    background: #007bff;
+    color: white;
+    border: none;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease, filter 0.4s ease;
+    filter: blur(6px);
   }
 
-  .image-container img {
-    border-radius: 20%;
-    max-width: 150px;
-    height: 215px;
-    width: auto;
-    object-fit: cover;
-    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.1);
+  .tab-buttons button.revealed {
+    filter: none;
   }
 
-  #firework-container {
-    position: fixed;
-    right: 5%;
-    bottom: 5%;
-    width: 10%;
-    height: 85%;
+  .tab-buttons button:hover {
+    background: #0056b3;
+  }
+
+  .tab-content {
+    display: none;
+    text-align: center;
+    max-width: 800px;
+    animation: fadeInUp 0.4s ease forwards;
+    background: rgba(255,255,255,0.9);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+
+  .tab-content p {
+    font-size: large;
+    line-height: 1.6;
+    margin-top: 15px;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  .card-grid {
     display: flex;
-    align-items: flex-end;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
   }
 
-  /* Firework effect */
-  .firework,
-  .firework::before,
-  .firework::after {
-    content: '';
-    position: absolute;
-    width: 0.5vmin;
-    aspect-ratio: 1;
-    background:
-      radial-gradient(circle, #ff0 0.3vmin, #0000 0) 50% 00%,
-      radial-gradient(circle, #f00 0.3vmin, #0000 0) 00% 50%,
-      radial-gradient(circle, #0f0 0.5vmin, #0000 0) 50% 99%,
-      radial-gradient(circle, #00f 0.2vmin, #0000 0) 99% 50%,
-      radial-gradient(circle, #ff8000 0.3vmin, #0000 0) 80% 90%,
-      radial-gradient(circle, #ff0080 0.5vmin, #0000 0) 95% 90%,
-      radial-gradient(circle, #ffff00 0.5vmin, #0000 0) 10% 60%,
-      radial-gradient(circle, #ff00ff 0.2vmin, #0000 0) 31% 80%,
-      radial-gradient(circle, #00ffff 0.3vmin, #0000 0) 80% 10%,
-      radial-gradient(circle, #ff4000 0.2vmin, #0000 0) 90% 23%,
-      radial-gradient(circle, #00ff80 0.3vmin, #0000 0) 45% 20%,
-      radial-gradient(circle, #8000ff 0.5vmin, #0000 0) 13% 24%,
-      radial-gradient(circle, #ff1493 0.3vmin, #0000 0) 25% 35%,
-      radial-gradient(circle, #1e90ff 0.5vmin, #0000 0) 70% 50%,
-      radial-gradient(circle, #ff4500 0.2vmin, #0000 0) 85% 65%,
-      radial-gradient(circle, #00fa9a 0.3vmin, #0000 0) 60% 30%,
-      radial-gradient(circle, #ffa500 0.5vmin, #0000 0) 40% 80%,
-      radial-gradient(circle, #ffd700 0.3vmin, #0000 0) 10% 10%,
-      radial-gradient(circle, #8a2be2 0.5vmin, #0000 0) 15% 75%,
-      radial-gradient(circle, #ff69b4 0.3vmin, #0000 0) 90% 40%,
-      radial-gradient(circle, #7fff00 0.5vmin, #0000 0) 55% 25%,
-      radial-gradient(circle, #dc143c 0.3vmin, #0000 0) 65% 85%,
-      radial-gradient(circle, #00ced1 0.5vmin, #0000 0) 35% 15%,
-      radial-gradient(circle, #ff6347 0.3vmin, #0000 0) 50% 75%,
-      radial-gradient(circle, #9400d3 0.5vmin, #0000 0) 75% 60%,
-      radial-gradient(circle, #adff2f 0.3vmin, #0000 0) 20% 90%,
-      radial-gradient(circle, #00bfff 0.5vmin, #0000 0) 30% 50%,
-      radial-gradient(circle, #32cd32 0.3vmin, #0000 0) 70% 20%,
-      radial-gradient(circle, #ff00ff 0.5vmin, #0000 0) 95% 35%;
-    background-size: 0.5vmin 0.5vmin;
-    background-repeat: no-repeat;
+  .info-card {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    font-size: 1.1rem;
+    min-width: 160px;
   }
 
-  /* Rotating effects for explosion */
-  .firework::before {
-    transform: translate(-50%, -50%) rotate(25deg) !important;
+  #game-list.collapsed {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
   }
 
-  .firework::after {
-    transform: translate(-50%, -50%) rotate(-37deg) !important;
+  #game-list.expanded {
+    max-height: 500px;
+    transition: max-height 0.2s ease;
   }
 
-  /* Explosion animation */
-  .exploded {
-    animation: firework-explosion 3s infinite;
-  }
-
-  @keyframes firework-explosion {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(2);
+  @keyframes fadeInUp {
+    from {
       opacity: 0;
-      width: 50vmin;
+      transform: translateY(30px);
     }
-  }
-
-  #cover {
-    position: absolute;
-    width: 1.2vmin; /* Increased size for visibility */
-    height: 1.2vmin; /* Explicit height to ensure a perfect circle */
-    background: radial-gradient(circle, #ff0 0.8vmin, #0000 0);
-    background-size: 100% 100%; /* Ensures the gradient fully fits */
-    background-repeat: no-repeat;
-    border-radius: 50%; /* Ensures it's always a circle */
-    z-index: 1000;
-  }
-
-  #cover::after {
-    content: '';
-    position: absolute;
-    width: 0.5vmin; /* Thin tail */
-    height: 5vmin; /* Long glowing tail */
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 0, 0.8),
-      rgba(255, 255, 0, 0)
-    ); /* Fading yellow tail */
-    bottom: -5vmin; /* Extends downward from the firework */
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    filter: blur(1px); /* Slight glow effect */
-  }
-
-  #skyfireworks {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-  }
-  .sky-firework {
-    position: absolute;
-    width: 1vmin;
-    aspect-ratio: 1;
-    background:
-      radial-gradient(circle, #ff0 0.3vmin, #0000 0) 50% 00%,
-      radial-gradient(circle, #f00 0.3vmin, #0000 0) 00% 50%,
-      radial-gradient(circle, #0f0 0.5vmin, #0000 0) 50% 99%,
-      radial-gradient(circle, #00f 0.2vmin, #0000 0) 99% 50%,
-      radial-gradient(circle, #ff8000 0.3vmin, #0000 0) 80% 90%,
-      radial-gradient(circle, #ff0080 0.5vmin, #0000 0) 95% 90%,
-      radial-gradient(circle, #ffff00 0.5vmin, #0000 0) 10% 60%,
-      radial-gradient(circle, #ff00ff 0.2vmin, #0000 0) 31% 80%,
-      radial-gradient(circle, #00ffff 0.3vmin, #0000 0) 80% 10%,
-      radial-gradient(circle, #ff4000 0.2vmin, #0000 0) 90% 23%,
-      radial-gradient(circle, #00ff80 0.3vmin, #0000 0) 45% 20%,
-      radial-gradient(circle, #8000ff 0.5vmin, #0000 0) 13% 24%,
-      radial-gradient(circle, #ff1493 0.3vmin, #0000 0) 25% 35%,
-      radial-gradient(circle, #1e90ff 0.5vmin, #0000 0) 70% 50%,
-      radial-gradient(circle, #ff4500 0.2vmin, #0000 0) 85% 65%,
-      radial-gradient(circle, #00fa9a 0.3vmin, #0000 0) 60% 30%,
-      radial-gradient(circle, #ffa500 0.5vmin, #0000 0) 40% 80%,
-      radial-gradient(circle, #ffd700 0.3vmin, #0000 0) 10% 10%,
-      radial-gradient(circle, #8a2be2 0.5vmin, #0000 0) 15% 75%,
-      radial-gradient(circle, #ff69b4 0.3vmin, #0000 0) 90% 40%,
-      radial-gradient(circle, #7fff00 0.5vmin, #0000 0) 55% 25%,
-      radial-gradient(circle, #dc143c 0.3vmin, #0000 0) 65% 85%,
-      radial-gradient(circle, #00ced1 0.5vmin, #0000 0) 35% 15%,
-      radial-gradient(circle, #ff6347 0.3vmin, #0000 0) 50% 75%,
-      radial-gradient(circle, #9400d3 0.5vmin, #0000 0) 75% 60%,
-      radial-gradient(circle, #adff2f 0.3vmin, #0000 0) 20% 90%,
-      radial-gradient(circle, #00bfff 0.5vmin, #0000 0) 30% 50%,
-      radial-gradient(circle, #32cd32 0.3vmin, #0000 0) 70% 20%,
-      radial-gradient(circle, #ff00ff 0.5vmin, #0000 0) 95% 35%;
-    background-size: 0.5vmin 0.5vmin;
-    background-repeat: no-repeat;
-    animation: firework-explosion 3s infinite;
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>

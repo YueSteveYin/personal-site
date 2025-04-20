@@ -97,60 +97,27 @@ function responseChat(message) {
 
 let fireworksSpawned = false;
 
+function showTab(tabId) {
+  // Show tab content
+  document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+
+  // Reveal clicked tab button
+  const allButtons = document.querySelectorAll('.tab-buttons button');
+  allButtons.forEach(btn => {
+    const id = btn.getAttribute('onclick')?.match(/'(.+)'/)[1];
+    if (id === tabId) btn.classList.add('revealed');
+  });
+}
+
+function toggleGames() {
+  const gameList = document.getElementById('game-list');
+  gameList.classList.toggle('collapsed');
+  gameList.classList.toggle('expanded');
+}
 function loadAbout() {
-  scrollTo(0, 0);
-  const firework = document.querySelector('.firework');
-  const cover = document.querySelector('#cover');
-  const sky = document.getElementById('skyfireworks');
-
-  if (!firework || !cover || !sky) {
-    console.error('Missing firework or cover element.');
-    return;
-  }
-
-  let fireworksSpawned = false;
-
-  function updateFirework() {
-    let scrollY = window.scrollY;
-    let progress = scrollY / (document.body.scrollHeight - window.innerHeight);
-
-    let fireworkMove = Math.min(progress * 90, 90);
-    firework.style.bottom = `${fireworkMove}%`;
-    cover.style.bottom = `${fireworkMove}%`;
-
-    if (progress >= 0.95) {
-      firework.classList.add('exploded');
-      cover.style.display = 'none';
-
-      if (!fireworksSpawned) {
-        spawnSkyFireworks(5); // spawn 5 fireworks
-        fireworksSpawned = true;
-      }
-    } else {
-      firework.classList.remove('exploded');
-      cover.style.display = 'block';
-      fireworksSpawned = false;
-      sky.innerHTML = ''; // clear old fireworks
-    }
-  }
-
-  function spawnSkyFireworks(count) {
-    for (let i = 0; i < count; i++) {
-      const fw = document.createElement('div');
-      fw.classList.add('sky-firework');
-
-      // Random position
-      fw.style.left = `${Math.random() * 80 + 10}%`;
-      fw.style.top = `${Math.random() * 20 + 5}%`;
-
-      // Staggered animation delay
-      fw.style.animationDelay = `${i * 0.3}s`;
-
-      document.getElementById('skyfireworks').appendChild(fw);
-    }
-  }
-
-  window.addEventListener('scroll', updateFirework);
+  const firstBtn = document.querySelector('.tab-buttons button');
+  if (firstBtn) firstBtn.classList.add('revealed');
 }
 
 // Load initial page on startup
@@ -166,19 +133,9 @@ function resetScrollbar() {
     slideshowContainer.scrollTop = 0; // Reset vertical scrollbar
   }
 }
-
 let slideIndex = 0;
-const contentDir = './components/experience_contents/';
-const experiences = [
-  'experience1.txt',
-  'experience2.txt',
-  'experience3.txt',
-  'experience4.txt',
-  'experience5.txt',
-];
-
-// Load experiences and add dots dynamically
 async function loadExperiences() {
+  
   const slidesTrack = document.getElementById('slidesTrack');
   const dotsContainer = document.getElementById('dotsContainer');
 
@@ -187,51 +144,31 @@ async function loadExperiences() {
     return;
   }
 
-  slidesTrack.innerHTML = ''; // Clear existing slides
-  dotsContainer.innerHTML = ''; // Clear existing dots
+  slidesTrack.innerHTML = '';
+  dotsContainer.innerHTML = '';
 
-  // Fetch and add slides
+  const contentDir = './components/experience_contents/';
+  const experiences = [
+    'experience1.md',
+    'experience2.md',
+    'experience3.md',
+    'experience4.md',
+    'experience5.md',
+    // Add more Markdown files here
+  ];
+
   for (let i = 0; i < experiences.length; i++) {
     const response = await fetch(contentDir + experiences[i]);
 
     if (response.ok) {
-      const text = await response.text();
-      const lines = text
-        .split('\n')
-        .map((line) => line.trim())
-        .filter((line) => line.length > 0);
+      const markdown = await response.text();
+      const html = window.marked(markdown); // ✅ use the global marked
 
-      if (lines.length < 3) {
-        console.error(`Invalid format in file: ${experiences[i]}`);
-        continue;
-      }
-
-      const [title, position, time] = lines.slice(0, 3);
-      let site = '';
-      let description = '';
-
-      // Check if the 4th line is a site link
-      if (lines[3].startsWith('site:')) {
-        site = lines[3].replace('site: ', '');
-        description = lines.slice(4).join('<br>'); // Combine the rest into the description
-      } else {
-        description = lines.slice(3).join('<br>'); // No site, so start description from 4th line
-      }
-
-      // Create slide
       const slide = document.createElement('div');
       slide.classList.add('mySlide');
-      slide.innerHTML = `
-                <h2>${title}</h2>
-                <p class="position-time">${position} | ${time}</p>
-                ${site ? `<a href="${site}" target="_blank">Visit Site</a>` : ''}
-                <div class="description">
-                    <p>${description}</p>
-                </div>
-            `;
+      slide.innerHTML = html;
       slidesTrack.appendChild(slide);
 
-      // Create corresponding dot
       const dot = document.createElement('span');
       dot.classList.add('dot');
       dot.setAttribute('onclick', `setSlide(${i})`);
@@ -241,10 +178,11 @@ async function loadExperiences() {
     }
   }
 
-  // Set initial slide position and activate first dot
   updateSlidePosition();
   updateDots();
 }
+
+
 
 // Move slides left or right
 function moveSlide(n) {
